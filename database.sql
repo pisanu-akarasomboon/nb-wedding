@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS wedding_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE wedding_db;
+
+CREATE TABLE IF NOT EXISTS guests (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  guest_name VARCHAR(255) NOT NULL,
+  token VARCHAR(100) NOT NULL UNIQUE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE TABLE IF NOT EXISTS rsvps (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  guest_id INT NULL,
+  guest_name VARCHAR(255) NOT NULL,
+  attendance VARCHAR(50) NOT NULL,
+  guests INT DEFAULT 1,
+  dietary VARCHAR(255) NULL,
+  message TEXT NULL,
+  ip_address VARCHAR(45) NULL,
+  user_agent VARCHAR(255) NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_guest_id (guest_id),
+  CONSTRAINT fk_rsvps_guest_id FOREIGN KEY (guest_id) REFERENCES guests(id) ON DELETE SET NULL
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
