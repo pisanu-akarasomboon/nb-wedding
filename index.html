@@ -681,6 +681,64 @@ leading-7">
     </div>
   </div>
 </section>
+  <section id="gallery" class="bg-[#10140f] px-5 py-20 md:px-10 md:py-28">
+  <div class="mx-auto max-w-6xl text-center">
+    <p class="mb-5 text-xs uppercase tracking-[0.35em] text-[#aab08d] md:tracking-[0.5em]">Gallery</p>
+    <h2 class="display mobile-section-title text-[clamp(3rem,7vw,7rem)] leading-none tracking-[-0.06em]">Our Gallery</h2>
+    <p class="mx-auto mt-6 max-w-xl leading-8 text-white/55">ภาพความทรงจำของเราทั้งสองคน เลื่อนดูได้ทั้งมือถือและคอมพิวเตอร์</p>
+
+    <div class="gallery-slider mt-12" aria-label="Wedding photo gallery">
+      <button class="gallery-btn prev no-print" type="button" onclick="moveGallery(-1)" aria-label="Previous photo">‹</button>
+
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb1.jpg" alt="Nitchakan and Pisanu wedding photo 1">
+          <div class="gallery-caption"><small>Memory 01</small><strong>Our Moment</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb2.jpg" alt="Nitchakan and Pisanu wedding photo 2">
+          <div class="gallery-caption"><small>Memory 02</small><strong>With Love</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb3.jpg" alt="Nitchakan and Pisanu wedding photo 3">
+          <div class="gallery-caption"><small>Memory 03</small><strong>Sweet Story</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb4.jpg" alt="Saint Louis Catholic Church">
+          <div class="gallery-caption"><small>Ceremony</small><strong>Sweet Story</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb5.jpg" alt="Maekmai Chaiklong Restaurant">
+          <div class="gallery-caption"><small>Reception</small><strong>Sweet Story</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb6.jpg" alt="Maekmai Chaiklong Restaurant">
+          <div class="gallery-caption"><small>Reception</small><strong>Sweet Story</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb7.jpg" alt="Maekmai Chaiklong Restaurant">
+          <div class="gallery-caption"><small>Reception</small><strong>Sweet Story</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb8.jpg" alt="Maekmai Chaiklong Restaurant">
+          <div class="gallery-caption"><small>Reception</small><strong>Sweet Story</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb9.jpg" alt="Maekmai Chaiklong Restaurant">
+          <div class="gallery-caption"><small>Reception</small><strong>Sweet Story</strong></div>
+        </div>
+        <div class="gallery-slide">
+          <img src="assets/images/gallery/nb10.jpg" alt="Maekmai Chaiklong Restaurant">
+          <div class="gallery-caption"><small>Reception</small><strong>Sweet Story</strong></div>
+        </div>
+      </div>
+
+      <button class="gallery-btn next no-print" type="button" onclick="moveGallery(1)" aria-label="Next photo">›</button>
+    </div>
+
+    <div class="gallery-dots no-print" id="galleryDots" aria-label="Gallery pagination"></div>
+  </div>
+</section>
   <!-- VENUE MAPS -->
 <section id="venue" class="bg-[#f6f0e6] px-5 py-20 text-[#10140f] md:px-10 md:py-28">
   <div class="mx-auto max-w-7xl">
