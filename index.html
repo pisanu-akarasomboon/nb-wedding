@@ -364,12 +364,23 @@
 
 
 /* ===== Wedding Gallery Slider ===== */
-.gallery-slider{
   position:relative;
-  overflow:hidden;
-  border-radius:36px;
   background:#10140f;
-  box-shadow:0 30px 90px rgba(0,0,0,.45);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:560px;
+  overflow:hidden;
+}
+
+.gallery-slide img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;      /* เปลี่ยนจาก cover */
+  object-position:center;
+  position:relative;
+  z-index:2;
 }
 .gallery-track{
   display:flex;
