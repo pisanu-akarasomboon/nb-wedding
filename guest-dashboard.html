@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10140f">
+  <title>Guest Dashboard | N&B Wedding</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<style>
+/* Mobile Compact Dashboard */
+@media (max-width: 767px){
+  body{padding:14px!important}
+  main{max-width:100%!important}
+  main>div:first-child{margin-bottom:18px!important;gap:14px!important}
+  main>div:first-child h1{margin-top:8px!important;font-size:1.7rem!important;line-height:1.08!important;letter-spacing:-.03em!important}
+  main>div:first-child p:last-child{margin-top:8px!important;font-size:.82rem!important;line-height:1.45!important}
+  main>div:first-child>div:last-child{display:grid!important;grid-template-columns:1fr 1fr!important;gap:8px!important;width:100%!important}
+  main>div:first-child>div:last-child button,
+  main>div:first-child>div:last-child label{width:100%!important;padding:.72rem .55rem!important;border-radius:14px!important;text-align:center!important;font-size:.74rem!important}
+
+  main>section.grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  main>section.grid>div{padding:14px!important;border-radius:20px!important;min-height:92px!important}
+  main>section.grid>div p:first-child{font-size:.72rem!important}
+  main>section.grid>div p:last-child{margin-top:7px!important;font-size:2rem!important;line-height:1!important}
+
+  main>section.mt-6{margin-top:14px!important;padding:14px!important;border-radius:22px!important}
+  main>section.mt-6 label{margin-bottom:8px!important;font-size:.76rem!important}
+  #guestName,#searchInput,#statusFilter{min-height:46px!important;padding:.78rem 1rem!important;border-radius:14px!important;font-size:.88rem!important}
+  #addGuestBtn{padding:.78rem 1rem!important;border-radius:14px!important;font-size:.86rem!important}
+
+  main>section.mt-6:nth-of-type(3) .flex{gap:9px!important}
+
+  main>section.mt-6.overflow-hidden{background:transparent!important;border:0!important;border-radius:0!important;overflow:visible!important;padding:0!important}
+  main>section.mt-6.overflow-hidden .overflow-x-auto{overflow:visible!important}
+  table{min-width:0!important;width:100%!important;display:block!important}
+  thead{display:none!important}
+  tbody{display:grid!important;gap:12px!important}
+  tr{display:block!important;background:#fff!important;border:0!important;border-radius:22px!important;overflow:hidden!important;box-shadow:0 10px 30px rgba(0,0,0,.18)!important}
+  td{display:block!important;width:100%!important;padding:10px 14px!important;text-align:left!important}
+  td:first-child{padding-top:14px!important}
+  td:last-child{padding-bottom:14px!important}
+  td input{width:100%!important;min-height:44px!important;border-radius:13px!important;padding:.7rem .85rem!important;font-size:.84rem!important}
+  td:nth-child(2) .flex{display:grid!important;grid-template-columns:1fr auto!important;gap:8px!important}
+  td:nth-child(2) button{padding:.7rem .9rem!important;border-radius:12px!important;font-size:.78rem!important}
+  td:nth-child(3){padding-top:2px!important;padding-bottom:8px!important}
+  td:nth-child(3) button{width:100%!important;padding:.62rem .9rem!important;font-size:.78rem!important}
+  td:nth-child(4) .flex{display:grid!important;grid-template-columns:repeat(3,1fr)!important;gap:8px!important}
+  td:nth-child(4) button,
+  td:nth-child(4) a{padding:.7rem .45rem!important;border-radius:12px!important;font-size:.74rem!important;text-align:center!important;white-space:nowrap!important}
+
+  main>p:last-child{margin-top:14px!important;font-size:.68rem!important;line-height:1.5!important;padding:0 8px!important}
+}
+
+
+/* ===== MOBILE ULTRA COMPACT OVERRIDE ===== */
+@media (max-width: 767px){
+  body{padding:10px!important}
+  main{max-width:100%!important}
+
+  main>div:first-child{margin-bottom:12px!important;gap:10px!important}
+  main>div:first-child p:first-child{font-size:.58rem!important;letter-spacing:.28em!important}
+  main>div:first-child h1{margin-top:5px!important;font-size:1.42rem!important;line-height:1.05!important;white-space:nowrap!important}
+  main>div:first-child p:last-child{margin-top:5px!important;font-size:.72rem!important;line-height:1.35!important}
+  main>div:first-child>div:last-child{gap:6px!important}
+  main>div:first-child>div:last-child button,
+  main>div:first-child>div:last-child label{padding:.58rem .35rem!important;border-radius:11px!important;font-size:.68rem!important}
+
+  main>section.grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important}
+  main>section.grid>div{min-height:68px!important;padding:9px!important;border-radius:15px!important}
+  main>section.grid>div p:first-child{font-size:.56rem!important;line-height:1.15!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+  main>section.grid>div p:last-child{margin-top:5px!important;font-size:1.5rem!important}
+
+  main>section.mt-6{margin-top:10px!important;padding:10px!important;border-radius:16px!important}
+  main>section.mt-6 label{margin-bottom:6px!important;font-size:.68rem!important}
+  main>section.mt-6 .flex{gap:7px!important}
+  #guestName,#searchInput,#statusFilter{min-height:40px!important;padding:.62rem .75rem!important;border-radius:11px!important;font-size:.78rem!important}
+  #addGuestBtn{padding:.62rem .75rem!important;border-radius:11px!important;font-size:.78rem!important}
+
+  /* เพิ่มชื่อแขกให้อยู่บรรทัดเดียว */
+  main>section.mt-6:nth-of-type(2) .flex{display:grid!important;grid-template-columns:1fr 105px!important}
+
+  /* ค้นหา + สถานะอยู่บรรทัดเดียว */
+  main>section.mt-6:nth-of-type(3) .flex{display:grid!important;grid-template-columns:1fr 118px!important}
+
+  main>section.mt-6.overflow-hidden{margin-top:10px!important}
+  tbody{gap:8px!important}
+  tr{border-radius:16px!important;box-shadow:0 8px 22px rgba(0,0,0,.16)!important;padding:10px!important}
+  td{padding:0!important}
+
+  td:first-child{padding:0!important}
+  td:first-child input{min-height:40px!important;padding:.6rem .72rem!important;border-radius:11px!important;font-size:.8rem!important;font-weight:700!important}
+
+  /* ซ่อนช่อง URL ยาวบน Mobile เหลือเฉพาะ Copy */
+  td:nth-child(2){padding-top:7px!important}
+  td:nth-child(2) .flex{display:block!important}
+  td:nth-child(2) input{display:none!important}
+  td:nth-child(2) button{width:100%!important;padding:.6rem!important;border-radius:10px!important;font-size:.72rem!important}
+
+  td:nth-child(3){padding-top:7px!important;padding-bottom:0!important}
+  td:nth-child(3) button{padding:.55rem!important;border-radius:10px!important;font-size:.7rem!important}
+
+  td:nth-child(4){padding-top:7px!important;padding-bottom:0!important}
+  td:nth-child(4) .flex{grid-template-columns:repeat(3,1fr)!important;gap:6px!important}
+  td:nth-child(4) button,
+  td:nth-child(4) a{padding:.58rem .25rem!important;border-radius:10px!important;font-size:.66rem!important}
+
+  main>p:last-child{margin-top:10px!important;font-size:.58rem!important;line-height:1.35!important}
+}
+
+
+
+
+/* ===== MOBILE GUEST LIST: ONE PERSON PER ROW ===== */
+@media (max-width: 767px){
+  main>section.mt-6.overflow-hidden{
+    overflow:hidden!important;
+    border-radius:16px!important;
+    background:#fff!important;
+  }
+
+  main>section.mt-6.overflow-hidden .overflow-x-auto{
+    overflow:visible!important;
+    padding:0!important;
+  }
+
+  table{
+    display:block!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  thead{display:none!important;}
+  tbody{
+    display:block!important;
+    width:100%!important;
+  }
+
+  tr{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    align-items:center!important;
+    gap:8px!important;
+    width:100%!important;
+    min-width:0!important;
+    padding:8px 10px!important;
+    border-radius:0!important;
+    border-bottom:1px solid rgba(16,20,15,.10)!important;
+    box-shadow:none!important;
+    background:#fff!important;
+  }
+
+  tr:last-child{border-bottom:0!important;}
+
+  td{
+    display:block!important;
+    width:auto!important;
+    min-width:0!important;
+    padding:0!important;
+  }
+
+  td:first-child{
+    position:relative!important;
+    padding-left:25px!important;
+  }
+
+  td:first-child:before{
+    content:'👤';
+    position:absolute;
+    left:0;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:15px;
+  }
+
+  td:first-child input{
+    width:100%!important;
+    min-height:36px!important;
+    padding:7px 8px!important;
+    border:0!important;
+    border-radius:8px!important;
+    background:transparent!important;
+    font-size:.79rem!important;
+    font-weight:700!important;
+    line-height:1.2!important;
+    white-space:nowrap!important;
+    overflow:hidden!important;
+    text-overflow:ellipsis!important;
+  }
+
+  td:nth-child(2),
+  td:nth-child(3){display:none!important;}
+
+  td:nth-child(4) .flex{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-end!important;
+    gap:3px!important;
+  }
+
+  td:nth-child(4) button,
+  td:nth-child(4) a{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:34px!important;
+    height:34px!important;
+    min-width:34px!important;
+    padding:0!important;
+    border-radius:9px!important;
+    border:1px solid rgba(16,20,15,.10)!important;
+    background:#f6f0e6!important;
+    color:#10140f!important;
+    font-size:0!important;
+    line-height:1!important;
+    text-decoration:none!important;
+  }
+
+  td:nth-child(4) .mobile-copy:before{content:'📋';font-size:16px;}
+  td:nth-child(4) .mobile-preview:before{content:'👁';font-size:16px;}
+  td:nth-child(4) .mobile-save:before{content:'💾';font-size:16px;}
+  td:nth-child(4) .mobile-delete:before{content:'🗑';font-size:16px;}
+
+  td:nth-child(4) .mobile-copy{background:#eaf1ff!important;}
+  td:nth-child(4) .mobile-preview{background:#f7f7f7!important;}
+  td:nth-child(4) .mobile-save{background:#e7f8ed!important;}
+  td:nth-child(4) .mobile-delete{background:#ffe9e9!important;}
+
+  #emptyState{padding:24px 12px!important;}
+}
+
+</style>
+
+</head>
+<body class="min-h-screen bg-[#10140f] p-5 text-white md:p-8">
+  <main class="mx-auto max-w-6xl">
+    <div class="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-xs uppercase tracking-[0.35em] text-[#aab08d]">N&B Wedding</p>
+        <h1 class="mt-3 text-3xl font-bold md:text-5xl">Guest Invitation Dashboard</h1>
+        <p class="mt-3 text-white/55">เพิ่มรายชื่อ ค้นหา และคัดลอกลิงก์เชิญแขกได้ทันที</p>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <button id="exportBtn" type="button" class="rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10">Export Excel</button>
+        <label class="cursor-pointer rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/10">
+          Import รายชื่อ
+          <input id="importFile" type="file" accept=".json" class="hidden">
+        </label>
+      </div>
+    </div>
+
+    <section class="grid gap-4 md:grid-cols-4">
+      <div class="rounded-3xl border border-white/10 bg-white/10 p-5"><p class="text-sm text-white/50">แขกทั้งหมด</p><p id="totalCount" class="mt-2 text-4xl font-bold text-[#f6f0e6]">0</p></div>
+      <div class="rounded-3xl border border-white/10 bg-white/10 p-5"><p class="text-sm text-white/50">เชิญแล้ว</p><p id="sentCount" class="mt-2 text-4xl font-bold text-[#aab08d]">0</p></div>
+      <div class="rounded-3xl border border-white/10 bg-white/10 p-5"><p class="text-sm text-white/50">ยังไม่ได้เชิญ</p><p id="notSentCount" class="mt-2 text-4xl font-bold text-[#f6f0e6]">0</p></div>
+      <div class="rounded-3xl border border-white/10 bg-white/10 p-5"><p class="text-sm text-white/50">ผลการค้นหา</p><p id="visibleCount" class="mt-2 text-4xl font-bold text-[#aab08d]">0</p></div>
+    </section>
+
+    <section class="mt-6 rounded-3xl border border-white/10 bg-white/10 p-5 md:p-7">
+      <label for="guestName" class="mb-3 block text-sm text-white/65">เพิ่มชื่อแขก</label>
+      <div class="flex flex-col gap-3 md:flex-row">
+        <input id="guestName" type="text" autocomplete="off" class="w-full rounded-2xl border-0 bg-white px-5 py-4 text-black outline-none" placeholder="เช่น คุณสมชาย และครอบครัว">
+        <button id="addGuestBtn" type="button" class="rounded-2xl bg-[#aab08d] px-8 py-4 font-bold text-[#10140f]">เพิ่มรายชื่อ</button>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-3xl border border-white/10 bg-white/10 p-5 md:p-7">
+      <div class="flex flex-col gap-3 md:flex-row md:items-center">
+        <input id="searchInput" type="search" autocomplete="off" class="w-full rounded-2xl border border-white/10 bg-[#181d16] px-5 py-4 text-white outline-none placeholder:text-white/35" placeholder="ค้นหาชื่อแขก...">
+        <select id="statusFilter" class="rounded-2xl border border-white/10 bg-[#181d16] px-5 py-4 text-white outline-none">
+          <option value="all">ทุกสถานะ</option>
+          <option value="not_sent">ยังไม่ได้เชิญ</option>
+          <option value="sent">เชิญแล้ว</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="mt-6 overflow-hidden rounded-3xl border border-white/10 bg-white">
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[900px] text-left text-[#10140f]">
+          <thead class="bg-[#aab08d]"><tr><th class="p-4">ชื่อแขก</th><th class="p-4">ลิงก์</th><th class="p-4 text-center">สถานะ</th><th class="p-4 text-center">จัดการ</th></tr></thead>
+          <tbody id="guestTableBody"></tbody>
+        </table>
+      </div>
+      <div id="emptyState" class="hidden p-10 text-center text-black/45">ไม่พบรายชื่อแขก</div>
+    </section>
+
+    <p class="mt-5 text-center text-xs leading-6 text-white/35">ข้อมูลจะถูกเก็บใน Browser เครื่องนี้โดยใช้ Local Storage ควรกด Export Excel เพื่อสำรองรายชื่อไว้เป็นระยะ</p>
+  </main>
+
+  <script>
+    const defaultGuests = [
+      { name: 'คุณสมชาย และครอบครัว', status: 'not_sent' },
+      { name: 'คุณสมหญิง', status: 'not_sent' },
+      { name: 'คุณอนันต์', status: 'not_sent' }
+    ];
+
+    const STORAGE_KEY = 'nbWeddingGuestsV1';
+    const guestInput = document.getElementById('guestName');
+    const addGuestBtn = document.getElementById('addGuestBtn');
+    const searchInput = document.getElementById('searchInput');
+    const statusFilter = document.getElementById('statusFilter');
+    const guestTableBody = document.getElementById('guestTableBody');
+    const emptyState = document.getElementById('emptyState');
+    const totalCount = document.getElementById('totalCount');
+    const sentCount = document.getElementById('sentCount');
+    const notSentCount = document.getElementById('notSentCount');
+    const visibleCount = document.getElementById('visibleCount');
+
+    let guests = loadGuests();
+
+    function createId() {
+      return window.crypto && crypto.randomUUID
+        ? crypto.randomUUID()
+        : Date.now().toString(36) + Math.random().toString(36).slice(2);
+    }
+
+    function normalizeGuest(guest) {
+      return {
+        id: guest.id || createId(),
+        name: String(guest.name || '').trim(),
+        status: guest.status === 'sent' ? 'sent' : 'not_sent',
+        createdAt: guest.createdAt || new Date().toISOString()
+      };
+    }
+
+    function loadGuests() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed)) return parsed.map(normalizeGuest).filter(guest => guest.name);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      const initialGuests = defaultGuests.map(normalizeGuest);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(initialGuests));
+      return initialGuests;
+    }
+
+    function saveGuests() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(guests));
+    }
+
+    function buildGuestLink(guestName) {
+      const weddingPage = new URL('index.html', window.location.href);
+      weddingPage.searchParams.set('guest', guestName);
+      return weddingPage.href;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function addGuest() {
+      const guestName = guestInput.value.trim();
+      if (!guestName) {
+        alert('กรุณากรอกชื่อแขก');
+        guestInput.focus();
+        return;
+      }
+      const duplicate = guests.some(guest => guest.name.toLocaleLowerCase('th') === guestName.toLocaleLowerCase('th'));
+      if (duplicate) {
+        alert('มีรายชื่อนี้อยู่แล้ว');
+        guestInput.select();
+        return;
+      }
+      guests.unshift({ id: createId(), name: guestName, status: 'not_sent', createdAt: new Date().toISOString() });
+      saveGuests();
+      guestInput.value = '';
+      guestInput.focus();
+      renderGuests();
+    }
+
+    function getFilteredGuests() {
+      const keyword = searchInput.value.trim().toLocaleLowerCase('th');
+      const selectedStatus = statusFilter.value;
+      return guests.filter(guest => {
+        const matchesKeyword = !keyword || guest.name.toLocaleLowerCase('th').includes(keyword);
+        const matchesStatus = selectedStatus === 'all' || guest.status === selectedStatus;
+        return matchesKeyword && matchesStatus;
+      });
+    }
+
+    function renderGuests() {
+      const filteredGuests = getFilteredGuests();
+      guestTableBody.innerHTML = filteredGuests.map(guest => {
+        const link = buildGuestLink(guest.name);
+        const isSent = guest.status === 'sent';
+        return `
+          <tr class="border-b border-black/10 last:border-b-0">
+            <td class="p-4 align-top">
+              <input id="name-${guest.id}" type="text" value="${escapeHtml(guest.name)}" class="w-full rounded-xl border border-black/15 px-4 py-3 outline-none focus:border-[#6c7450]">
+            </td>
+            <td class="p-4 align-top">
+              <div class="flex gap-2">
+                <input id="link-${guest.id}" type="text" value="${escapeHtml(link)}" readonly onclick="this.select()" class="w-full rounded-xl border border-black/15 bg-black/[0.03] px-4 py-3 text-sm">
+                <button type="button" onclick="copyGuestLink('${guest.id}')" class="rounded-xl bg-blue-600 px-4 py-3 font-bold text-white">Copy</button>
+              </div>
+            </td>
+            <td class="p-4 text-center align-top">
+              <button type="button" onclick="toggleGuestStatus('${guest.id}')" class="rounded-full px-4 py-2 text-sm font-bold ${isSent ? 'bg-green-100 text-green-700' : 'bg-amber-100 text-amber-700'}">${isSent ? 'เชิญแล้ว' : 'ยังไม่ได้เชิญ'}</button>
+            </td>
+            <td class="p-4 align-top">
+              <div class="flex justify-center gap-2">
+                <button type="button" onclick="copyGuestLink('${guest.id}')" class="mobile-copy rounded-xl bg-blue-600 px-4 py-3 font-bold text-white" title="Copy Link">Copy</button>
+                <a href="${escapeHtml(link)}" target="_blank" rel="noopener" class="mobile-preview rounded-xl border border-black/20 px-4 py-3 font-bold" title="Preview">Preview</a>
+                <button type="button" onclick="saveGuestName('${guest.id}')" class="mobile-save rounded-xl bg-green-600 px-4 py-3 font-bold text-white" title="Save">Save</button>
+                <button type="button" onclick="deleteGuest('${guest.id}')" class="mobile-delete rounded-xl bg-red-600 px-4 py-3 font-bold text-white" title="Delete">ลบ</button>
+              </div>
+            </td>
+          </tr>`;
+      }).join('');
+      emptyState.classList.toggle('hidden', filteredGuests.length !== 0);
+      updateSummary(filteredGuests.length);
+    }
+
+    function updateSummary(filteredCount) {
+      const sent = guests.filter(guest => guest.status === 'sent').length;
+      totalCount.textContent = guests.length;
+      sentCount.textContent = sent;
+      notSentCount.textContent = guests.length - sent;
+      visibleCount.textContent = filteredCount;
+    }
+
+    async function copyGuestLink(id) {
+      const guest = guests.find(item => item.id === id);
+      if (!guest) return;
+      const link = buildGuestLink(guest.name);
+      try {
+        await navigator.clipboard.writeText(link);
+      } catch (error) {
+        const linkInput = document.getElementById(`link-${id}`);
+        if (linkInput) {
+          linkInput.select();
+          document.execCommand('copy');
+        }
+      }
+      alert(`คัดลอกลิงก์ของ ${guest.name} แล้ว`);
+    }
+
+    function toggleGuestStatus(id) {
+      const guest = guests.find(item => item.id === id);
+      if (!guest) return;
+      guest.status = guest.status === 'sent' ? 'not_sent' : 'sent';
+      saveGuests();
+      renderGuests();
+    }
+
+    function saveGuestName(id) {
+      const guest = guests.find(item => item.id === id);
+      const nameInput = document.getElementById(`name-${id}`);
+      if (!guest || !nameInput) return;
+      const newName = nameInput.value.trim();
+      if (!newName) {
+        alert('ชื่อแขกห้ามเป็นค่าว่าง');
+        nameInput.focus();
+        return;
+      }
+      const duplicate = guests.some(item => item.id !== id && item.name.toLocaleLowerCase('th') === newName.toLocaleLowerCase('th'));
+      if (duplicate) {
+        alert('มีรายชื่อนี้อยู่แล้ว');
+        nameInput.focus();
+        return;
+      }
+      guest.name = newName;
+      saveGuests();
+      renderGuests();
+      alert('บันทึกชื่อเรียบร้อยแล้ว');
+    }
+
+    function deleteGuest(id) {
+      const guest = guests.find(item => item.id === id);
+      if (!guest) return;
+      if (!confirm(`ต้องการลบรายชื่อ "${guest.name}" ใช่ไหม?`)) return;
+      guests = guests.filter(item => item.id !== id);
+      saveGuests();
+      renderGuests();
+    }
+
+    function exportGuests() {
+      if (typeof XLSX === 'undefined') {
+        alert('ไม่สามารถโหลดระบบ Export Excel ได้ กรุณาตรวจสอบอินเทอร์เน็ตแล้วลองใหม่');
+        return;
+      }
+
+      if (!guests.length) {
+        alert('ยังไม่มีรายชื่อแขกสำหรับ Export');
+        return;
+      }
+
+      const exportRows = guests.map((guest, index) => ({
+        'ลำดับ': index + 1,
+        'ชื่อแขก': guest.name,
+        'ลิงก์เชิญ': buildGuestLink(guest.name),
+        'สถานะ': guest.status === 'sent' ? 'เชิญแล้ว' : 'ยังไม่ได้เชิญ'
+      }));
+
+      const worksheet = XLSX.utils.json_to_sheet(exportRows, {
+        header: ['ลำดับ', 'ชื่อแขก', 'ลิงก์เชิญ', 'สถานะ']
+      });
+
+      worksheet['!cols'] = [
+        { wch: 10 },
+        { wch: 32 },
+        { wch: 70 },
+        { wch: 20 }
+      ];
+
+      worksheet['!autofilter'] = {
+        ref: `A1:D${exportRows.length + 1}`
+      };
+
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'รายชื่อแขก');
+
+      const fileDate = new Date().toISOString().slice(0, 10);
+      XLSX.writeFile(workbook, `NB-Wedding-Guest-List-${fileDate}.xlsx`);
+    }
+
+    function importGuests(file) {
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function () {
+        try {
+          const importedData = JSON.parse(reader.result);
+          if (!Array.isArray(importedData)) throw new Error('invalid');
+          const normalizedGuests = importedData.map(normalizeGuest).filter(guest => guest.name);
+          if (!confirm(`พบรายชื่อ ${normalizedGuests.length} รายชื่อ\nต้องการนำเข้าทับข้อมูลเดิมใช่ไหม?`)) return;
+          guests = normalizedGuests;
+          saveGuests();
+          renderGuests();
+          alert('นำเข้ารายชื่อเรียบร้อยแล้ว');
+        } catch (error) {
+          alert('ไม่สามารถนำเข้าไฟล์ได้ กรุณาใช้ไฟล์ JSON ที่ Export จากหน้านี้');
+        }
+      };
+      reader.readAsText(file, 'utf-8');
+    }
+
+    addGuestBtn.addEventListener('click', addGuest);
+    guestInput.addEventListener('keydown', event => { if (event.key === 'Enter') addGuest(); });
+    searchInput.addEventListener('input', renderGuests);
+    statusFilter.addEventListener('change', renderGuests);
+    document.getElementById('exportBtn').addEventListener('click', exportGuests);
+    document.getElementById('importFile').addEventListener('change', function () { importGuests(this.files[0]); this.value = ''; });
+    renderGuests();
+  </script>
+</body>
+</html>
