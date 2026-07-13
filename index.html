@@ -724,11 +724,192 @@
 .download-card-fixed.exporting-card .dress-dot.khaki{background:#8B7A4B!important;background-color:#8B7A4B!important;}
 .download-card-fixed.exporting-card .dress-dot.white{background:#F8F5EE!important;background-color:#F8F5EE!important;}
 
+
+
+/* ===== Personalized Guest Name: HTML + GitHub Pages ===== */
+.download-guest-wrap{
+  margin-top:1.15rem;
+  text-align:center;
+}
+.download-guest-label{
+  display:block;
+  color:#aab08d;
+  font-size:.58rem;
+  font-weight:700;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+}
+.download-guest-name{
+  display:block;
+  max-width:100%;
+  margin-top:.55rem;
+  padding:0 .5rem;
+  color:#f6f0e6;
+  font-family:'Noto Sans Thai',sans-serif;
+  font-size:clamp(1.05rem,3.4vw,1.4rem);
+  font-weight:500;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+.download-card-fixed.exporting-card .download-guest-wrap{
+  margin-top:42px;
+}
+.download-card-fixed.exporting-card .download-guest-label{
+  font-size:18px;
+}
+.download-card-fixed.exporting-card .download-guest-name{
+  margin-top:18px;
+  padding:0 40px;
+  font-size:40px;
+  line-height:1.4;
+}
+@media(max-width:767px){
+  #openingGuestName{
+    max-width:280px;
+    margin-left:auto;
+    margin-right:auto;
+    font-size:1rem;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+  }
+  .download-guest-wrap{
+    margin-top:.9rem;
+  }
+  .download-guest-label{
+    font-size:.48rem;
+  }
+  .download-guest-name{
+    margin-top:.4rem;
+    font-size:.95rem;
+  }
+}
+
+
+
+/* ===== FINAL SCHEDULE ALIGNMENT ONLY ===== */
+#schedule .rose-path-card{
+  min-height:900px!important;
+}
+
+#schedule .rose-item{
+  align-items:center!important;
+}
+
+#schedule .rose-box{
+  width:270px!important;
+  min-width:270px!important;
+  height:138px!important;
+  min-height:138px!important;
+  padding:18px 22px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:center!important;
+}
+
+#schedule .rose-box span,
+#schedule .rose-box strong,
+#schedule .rose-box small{
+  flex:0 0 auto!important;
+}
+
+#schedule .rose-box span{
+  margin:0!important;
+  line-height:.92!important;
+}
+
+#schedule .rose-box strong{
+  margin-top:9px!important;
+  min-height:1.3em!important;
+}
+
+#schedule .rose-box small{
+  margin-top:6px!important;
+  min-height:2.55em!important;
+}
+
+#schedule .rose-tag{
+  margin-top:8px!important;
+}
+
+#schedule .rose-item:nth-of-type(1){--y:10%!important;}
+#schedule .rose-item:nth-of-type(2){--y:26%!important;}
+#schedule .rose-item:nth-of-type(3){--y:42%!important;}
+#schedule .rose-item:nth-of-type(4){--y:58%!important;}
+#schedule .rose-item:nth-of-type(5){--y:74%!important;}
+#schedule .rose-item:nth-of-type(6){--y:90%!important;}
+
+@media(max-width:767px){
+  #schedule .rose-path-card{
+    min-height:760px!important;
+    max-width:388px!important;
+  }
+
+  #schedule .rose-item{
+    width:calc(50% - 10px)!important;
+    gap:6px!important;
+  }
+
+  #schedule .rose-item.rose-left{
+    left:10px!important;
+  }
+
+  #schedule .rose-item.rose-right{
+    right:10px!important;
+  }
+
+  #schedule .rose-box{
+    width:126px!important;
+    min-width:126px!important;
+    max-width:126px!important;
+    height:104px!important;
+    min-height:104px!important;
+    padding:10px 9px!important;
+    border-radius:17px!important;
+  }
+
+  #schedule .rose-box span{
+    font-size:1.28rem!important;
+    line-height:.92!important;
+  }
+
+  #schedule .rose-box strong{
+    margin-top:5px!important;
+    min-height:1.25em!important;
+    font-size:.72rem!important;
+    line-height:1.12!important;
+  }
+
+  #schedule .rose-box small{
+    margin-top:4px!important;
+    min-height:2.35em!important;
+    font-size:.57rem!important;
+    line-height:1.18!important;
+  }
+
+  #schedule .rose-dot{
+    width:38px!important;
+    height:38px!important;
+    flex:0 0 38px!important;
+  }
+
+  #schedule .rose-item:nth-of-type(1){--y:10%!important;}
+  #schedule .rose-item:nth-of-type(2){--y:26%!important;}
+  #schedule .rose-item:nth-of-type(3){--y:42%!important;}
+  #schedule .rose-item:nth-of-type(4){--y:58%!important;}
+  #schedule .rose-item:nth-of-type(5){--y:74%!important;}
+  #schedule .rose-item:nth-of-type(6){--y:90%!important;}
+}
+
 </style>
 </head>
 <body><main class="min-h-screen bg-[#10140f] text-white"><audio id="weddingMusic" loop preload="auto" playsinline><source src="assets/music/nothing-gonna-change-my-love-for-you.mp3" type="audio/mpeg"></audio><div class="grain"></div><div id="petalLayer" class="petal-layer" aria-hidden="true"></div>
 <section id="opening" class="fixed inset-0 z-[100] flex items-center justify-center nature px-6 transition duration-700"><div class="absolute left-[8%] top-[18%] text-[9rem] text-white opacity-[.035]">P</div><div class="absolute bottom-[10%] right-[8%] text-[9rem] text-white opacity-[.035]">N</div><div class="relative w-full max-w-md rounded-[42px] glass p-7 text-center shadow-[0_40px_140px_rgba(0,0,0,.55)] md:p-9">
-  <div class="absolute inset-4 rounded-[32px] border border-white/10"></div><div class="relative z-10"><p class="text-[10px] uppercase tracking-[0.42em] text-[#e8e0d2] md:tracking-[0.52em]">Private Invitation</p><p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/45">เรียนเชิญ</p><p class="mt-3 text-lg leading-8 text-[#f6f0e6]">แขกผู้มีเกียรติ</p><div class="mx-auto my-8 h-20 w-[1px] bg-gradient-to-b from-transparent via-[#e8e0d2] to-transparent md:my-10 md:h-24"></div><h1 class="display mobile-safe-title text-6xl leading-[0.9] tracking-[-0.04em] md:text-7xl">Nitchakan<span class="block italic text-[#aab08d]">& Pisanu</span></h1><p class="mt-8 text-xs uppercase tracking-[0.24em] text-white/55 md:tracking-[0.32em]">26 September 2026</p><button id="openBtn" class="mt-10 rounded-full bg-[#f6f0e6] px-8 py-4 text-xs font-bold uppercase tracking-[0.22em] text-[#2e3325] transition hover:scale-105 md:mt-12 md:tracking-[0.28em]">Open Invitation</button><p id="audioHint" class="mt-4 hidden text-[11px] leading-5 text-white/50">หากมือถือไม่เล่นเพลงอัตโนมัติ ให้กด Music On อีกครั้ง</p></div></div></section>
+  <div class="absolute inset-4 rounded-[32px] border border-white/10"></div><div class="relative z-10"><p class="text-[10px] uppercase tracking-[0.42em] text-[#e8e0d2] md:tracking-[0.52em]">Private Invitation</p><p class="mt-6 text-[10px] uppercase tracking-[0.3em] text-white/45">เรียนเชิญ</p><p
+  id="openingGuestName"
+  class="mt-3 px-3 text-lg leading-8 text-[#f6f0e6]"
+>
+  แขกผู้มีเกียรติ
+</p><div class="mx-auto my-8 h-20 w-[1px] bg-gradient-to-b from-transparent via-[#e8e0d2] to-transparent md:my-10 md:h-24"></div><h1 class="display mobile-safe-title text-6xl leading-[0.9] tracking-[-0.04em] md:text-7xl">Nitchakan<span class="block italic text-[#aab08d]">& Pisanu</span></h1><p class="mt-8 text-xs uppercase tracking-[0.24em] text-white/55 md:tracking-[0.32em]">26 September 2026</p><button id="openBtn" class="mt-10 rounded-full bg-[#f6f0e6] px-8 py-4 text-xs font-bold uppercase tracking-[0.22em] text-[#2e3325] transition hover:scale-105 md:mt-12 md:tracking-[0.28em]">Open Invitation</button><p id="audioHint" class="mt-4 hidden text-[11px] leading-5 text-white/50">หากมือถือไม่เล่นเพลงอัตโนมัติ ให้กด Music On อีกครั้ง</p></div></div></section>
 <div class="floating-actions no-print fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 gap-3"><button id="musicBtn" class="rounded-full bg-white px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-[#10140f] shadow-2xl">Music On</button><button id="downloadBtn" class="rounded-full bg-[#aab08d] px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-[#10140f] shadow-2xl">Download</button></div>
 <nav class="no-print fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#10140f]/76 backdrop-blur-xl"><div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 md:px-10"><a href="#" class="display text-2xl italic tracking-[-0.03em]">P<span class="text-[#aab08d]">&</span>N</a><div class="hidden gap-8 text-[10px] uppercase tracking-[0.3em] text-white/50 md:flex"><a href="#video">Video</a><a href="#gallery">Gallery</a><a href="#story">Story</a><a href="#schedule">Schedule</a><a href="#rsvp">RSVP</a><a href="#venue">Venue</a><a href="#gift">Gift</a></div></div></nav>
 <section class="relative min-h-screen overflow-hidden"><picture class="absolute inset-0">
@@ -1090,7 +1271,7 @@ leading-7">
         </div>
       </div>
 
-      <div class="rose-item rose-right" style="--y:25%;">
+      <div class="rose-item rose-right" style="--y:26%;">
         <div class="rose-dot" data-step="2">🌹</div>
         <div class="rose-box">
           <span>10:30</span>
@@ -1100,7 +1281,7 @@ leading-7">
         </div>
       </div>
 
-      <div class="rose-item rose-left" style="--y:40%;">
+      <div class="rose-item rose-left" style="--y:42%;">
         <div class="rose-dot" data-step="3">📸</div>
         <div class="rose-box">
           <span>12:00</span>
@@ -1110,7 +1291,7 @@ leading-7">
         </div>
       </div>
 
-      <div class="rose-item rose-right" style="--y:55%;">
+      <div class="rose-item rose-right" style="--y:58%;">
         <div class="rose-dot" data-step="4">🍃</div>
         <div class="rose-box">
           <span>13:00</span>
@@ -1120,7 +1301,7 @@ leading-7">
         </div>
       </div>
 
-      <div class="rose-item rose-left" style="--y:70%;">
+      <div class="rose-item rose-left" style="--y:74%;">
         <div class="rose-dot" data-step="5">🙏</div>
         <div class="rose-box">
           <span>13:30</span>
@@ -1130,7 +1311,7 @@ leading-7">
         </div>
       </div>
 
-      <div class="rose-item rose-right" style="--y:87%;">
+      <div class="rose-item rose-right" style="--y:90%;">
         <div class="rose-dot" data-step="6">🍽️</div>
         <div class="rose-box">
           <span>14:00–17:00</span>
@@ -1324,6 +1505,12 @@ leading-7">
 
   <div class="download-card-body">
     <p class="download-card-kicker">Wedding Invitation</p>
+
+    <div class="download-guest-wrap">
+      <small class="download-guest-label">เรียนเชิญ</small>
+      <strong id="downloadGuestName" class="download-guest-name">แขกผู้มีเกียรติ</strong>
+    </div>
+
     <h3 class="display download-card-names">Nitchakan<span>& Pisanu</span></h3>
 
     <div class="download-card-details">
@@ -1489,4 +1676,26 @@ async function downloadCard(){
 }
 document.getElementById('downloadBtn').addEventListener('click',downloadCard);document.getElementById('downloadCard2').addEventListener('click',downloadCard);
 const MS_FORM_URL='https://forms.gle/3RwpvYcZQgSCttir9';
-</script></body></html>
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const params = new URLSearchParams(window.location.search);
+  const guestFromUrl = params.get('guest');
+  const guestName = guestFromUrl && guestFromUrl.trim()
+    ? guestFromUrl.trim()
+    : 'แขกผู้มีเกียรติ';
+
+  const openingGuestName = document.getElementById('openingGuestName');
+  const downloadGuestName = document.getElementById('downloadGuestName');
+
+  if (openingGuestName) {
+    openingGuestName.textContent = guestName;
+  }
+
+  if (downloadGuestName) {
+    downloadGuestName.textContent = guestName;
+  }
+});
+</script>
+
+</body></html>
