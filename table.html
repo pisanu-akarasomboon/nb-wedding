@@ -1182,8 +1182,7 @@ h1 .amp{color:var(--olive)!important}
 }
 
 /* ภาพอ้างอิงมี 9 โต๊ะ จึงไม่แสดงสองตำแหน่งนี้บนผัง */
-#zoneOutdoor .table-unit[data-table="B09"],
-#zoneOutdoor .table-unit[data-table="T15"]{
+#zoneOutdoor .table-unit[data-table="B09"]{
   display:none!important;
 }
 
@@ -3008,8 +3007,7 @@ html,body{
 }
 
 /* คง B09/B10 ซ่อนเหมือนเวอร์ชันเดิม */
-#zoneOutdoor .table-unit[data-table="B09"],
-#zoneOutdoor .table-unit[data-table="T15"]{
+#zoneOutdoor .table-unit[data-table="B09"]{
   display:none!important;
 }
 
@@ -3267,6 +3265,18 @@ html,body{
 }
 </style>
 
+
+<style id="bridge-lower-position-v23">
+/* ===== ย้ายสะพานลงมาช่วงล่างของคลอง ===== */
+@media (min-width:1101px){
+  .canal .bridge{
+    top:86%!important;
+    left:50%!important;
+    transform:translate(-50%,-50%)!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -3438,7 +3448,7 @@ const TABLES=[
   {id:'T14',zone:'outdoor',shape:'rect',seats:10}, // โต๊ะริมคลองใหม่ ระหว่าง T13 และ T15
   {id:'T09',zone:'outdoor',shape:'long',seats:10},{id:'T06',zone:'outdoor',shape:'round',seats:10},
   {id:'T15',zone:'outdoor',shape:'rect',seats:10},{id:'T08',zone:'outdoor',shape:'rect',seats:10},{id:'B09',zone:'outdoor',shape:'rect',seats:10},
-  {id:'T15',zone:'outdoor',shape:'rect',seats:10},{id:'T16',zone:'outdoor',shape:'rect',seats:6},
+  {id:'T16',zone:'outdoor',shape:'rect',seats:6},
 
   // Family & VIP — เพิ่ม 3 โต๊ะ โต๊ะละ 10 ที่นั่ง ตามภาพอ้างอิง
   {id:'T43',zone:'vip',shape:'rect',seats:10},
