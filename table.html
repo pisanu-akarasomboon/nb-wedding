@@ -3277,6 +3277,21 @@ html,body{
 }
 </style>
 
+
+<style id="mobile-t10-t07-t09-t06-spacing-v24">
+/* Mobile: เพิ่มระยะห่างแนวตั้งของกลุ่ม T10/T07 กับ T09/T06 */
+@media(max-width:700px){
+  #zoneOutdoor .table-unit[data-table="T09"],
+  #zoneOutdoor .table-unit[data-table="T06"]{
+    transform:translateY(64px)!important;
+  }
+  /* ขยับแถวถัดไปตามลงมา เพื่อรักษาช่องไฟและไม่ชนกัน */
+  #zoneOutdoor .table-unit[data-table="T08"]{
+    transform:translateY(104px)!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
