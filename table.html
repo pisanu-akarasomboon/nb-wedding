@@ -829,7 +829,7 @@ h1 .amp{color:var(--olive)!important}
 #zoneIndoor .table-unit[data-table="T24"]{grid-column:3;grid-row:1}
 #zoneIndoor .table-unit[data-table="T23"]{grid-column:3;grid-row:2}
 #zoneIndoor .table-unit[data-table="T22"]{grid-column:3;grid-row:3}
-#zoneIndoor .table-unit[data-table="A12"]{grid-column:3;grid-row:4}
+#zoneIndoor .table-unit[data-table="T21"]{grid-column:3;grid-row:4}
 
 /* Both long tables must be exactly the same size */
 #zoneIndoor .table-unit[data-table="T26"],
@@ -921,7 +921,7 @@ h1 .amp{color:var(--olive)!important}
 }
 
 /* ---------- ลานออมชอม ---------- */
-/* 4 แถวพอดีกับ A01/A04/A07/A10 และ A03/A06/A09/A12
+/* 4 แถวพอดีกับ A01/A04/A07/A10 และ A03/A06/A09/T21
    T26 + T25 อยู่กลางและต่อกัน */
 #zoneIndoor .tables{
   display:grid!important;
@@ -954,7 +954,7 @@ h1 .amp{color:var(--olive)!important}
 #zoneIndoor .table-unit[data-table="T24"]{grid-column:3!important;grid-row:1!important}
 #zoneIndoor .table-unit[data-table="T23"]{grid-column:3!important;grid-row:2!important}
 #zoneIndoor .table-unit[data-table="T22"]{grid-column:3!important;grid-row:3!important}
-#zoneIndoor .table-unit[data-table="A12"]{grid-column:3!important;grid-row:4!important}
+#zoneIndoor .table-unit[data-table="T21"]{grid-column:3!important;grid-row:4!important}
 
 /* T26 / T25 สูงเท่ากัน และชิดกัน */
 #zoneIndoor .table-unit[data-table="T26"],
@@ -3292,6 +3292,434 @@ html,body{
 }
 </style>
 
+
+<style id="mobile-two-point-fix-v25">
+/* =========================================================
+   MOBILE FIX — แก้เฉพาะ 2 จุดตามภาพ
+   1) หัว "ลานออมชอม" ไม่ชนปุ่มเวที
+   2) เรือนสมานฉันท์ ชั้น 2 ไม่ล้น/ถูกตัดบนมือถือ
+   ========================================================= */
+
+@media (max-width:600px){
+
+  /* ---------- จุดที่ 1 : ชื่อโซน + เวที ---------- */
+  #zoneIndoor{
+    /* เพิ่มพื้นที่หัวเล็กน้อยเพื่อให้ชื่อโซนกับเวทีแยกกันชัด */
+    padding-top:86px!important;
+  }
+
+  #zoneIndoor .zone-label{
+    top:20px!important;
+    left:14px!important;
+    right:auto!important;
+    max-width:190px!important;
+    font-size:20px!important;
+    line-height:1.15!important;
+    white-space:nowrap!important;
+    z-index:7!important;
+  }
+
+  #zoneIndoor .stage{
+    top:16px!important;
+    left:auto!important;
+    right:14px!important;
+    transform:none!important;
+
+    width:104px!important;
+    height:42px!important;
+
+    font-size:13px!important;
+    letter-spacing:.08em!important;
+    border-radius:14px!important;
+    z-index:8!important;
+  }
+
+
+  /* ---------- จุดที่ 2 : เรือนสมานฉันท์ / T31-T33 ---------- */
+  .vip-second-floor{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    overflow:visible!important;
+    padding:14px 12px 18px!important;
+  }
+
+  .vip-second-floor-head{
+    width:100%!important;
+    min-width:0!important;
+  }
+
+  /* มือถือเรียงทีละโต๊ะลงด้านล่าง
+     เพื่อให้ T31 / T32 / T33 อยู่ครบและไม่มีโต๊ะใดถูกตัดขอบ */
+  .vip-second-floor-tables{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    grid-template-rows:auto!important;
+
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+
+    gap:26px!important;
+    padding:18px 10px 10px!important;
+
+    justify-items:center!important;
+    align-items:center!important;
+    overflow:visible!important;
+  }
+
+  .vip-second-floor-tables .table-unit{
+    width:100%!important;
+    max-width:310px!important;
+    min-width:0!important;
+
+    height:190px!important;
+    min-height:190px!important;
+
+    margin:0 auto!important;
+    overflow:visible!important;
+  }
+
+  /* T31 / T33 แนวนอน */
+  .vip-second-floor-tables .table-unit[data-table="T31"] .table-core,
+  .vip-second-floor-tables .table-unit[data-table="T33"] .table-core{
+    width:170px!important;
+    height:66px!important;
+  }
+
+  /* T32 โต๊ะกลม ให้เหลือพื้นที่รอบวงเก้าอี้ */
+  .vip-second-floor-tables .table-unit[data-table="T32"] .table-core{
+    width:108px!important;
+    height:108px!important;
+    min-width:108px!important;
+    min-height:108px!important;
+  }
+
+  .vip-second-floor-tables .table-unit[data-table="T31"] .chairs,
+  .vip-second-floor-tables .table-unit[data-table="T32"] .chairs,
+  .vip-second-floor-tables .table-unit[data-table="T33"] .chairs{
+    overflow:visible!important;
+  }
+}
+
+/* iPhone จอแคบมาก */
+@media (max-width:390px){
+  #zoneIndoor .zone-label{
+    max-width:170px!important;
+    font-size:19px!important;
+  }
+
+  #zoneIndoor .stage{
+    right:10px!important;
+    width:96px!important;
+    height:40px!important;
+    font-size:12px!important;
+  }
+
+  .vip-second-floor-tables .table-unit{
+    max-width:285px!important;
+  }
+
+  .vip-second-floor-tables .table-unit[data-table="T31"] .table-core,
+  .vip-second-floor-tables .table-unit[data-table="T33"] .table-core{
+    width:158px!important;
+  }
+}
+</style>
+
+
+<style id="custom-table-name-v27">
+.table-custom-name{
+  display:block;
+  max-width:130px;
+  margin:3px auto 0;
+  padding:2px 6px;
+  border-radius:999px;
+  color:#6c7450!important;
+  background:rgba(170,176,141,.13);
+  font-family:Manrope,'Noto Sans Thai',sans-serif!important;
+  font-size:8px!important;
+  font-weight:700;
+  line-height:1.25;
+  letter-spacing:0!important;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.table-name-editor{
+  margin-bottom:14px;
+  padding:14px;
+  border:1px solid #e2d9cb;
+  border-radius:16px;
+  background:#f8f3ea;
+}
+
+.table-name-editor label{
+  display:block;
+  margin-bottom:7px;
+  color:#666b58;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.table-name-editor-row{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:8px;
+}
+
+.table-name-editor input{
+  width:100%;
+  min-width:0;
+  padding:11px 12px;
+  border:1px solid #d9d0c2;
+  border-radius:12px;
+  background:#fff;
+  color:#34382e;
+  outline:none;
+}
+
+.table-name-editor input:focus{
+  border-color:#9ea681;
+  box-shadow:0 0 0 3px rgba(170,176,141,.16);
+}
+
+.table-name-editor small{
+  display:block;
+  margin-top:7px;
+  color:#918b7e;
+  font-size:10px;
+}
+
+@media(max-width:600px){
+  .table-custom-name{
+    max-width:92px;
+    font-size:7px!important;
+  }
+
+  .table-name-editor-row{
+    grid-template-columns:1fr;
+  }
+
+  .table-name-editor-row .btn{
+    width:100%;
+  }
+}
+</style>
+
+
+<style id="custom-table-name-people-v28">
+/* ===== ชื่อโต๊ะ + จำนวนคน แบบเด่น ===== */
+.table-core.has-custom-meta{
+  --named-bg:#e8ecd9;
+  --named-border:#9ca77e;
+  --named-ink:#3e4933;
+
+  background:var(--named-bg)!important;
+  border:2px solid var(--named-border)!important;
+  box-shadow:
+    0 9px 22px rgba(70,61,45,.12),
+    0 0 0 4px color-mix(in srgb,var(--named-border) 12%, transparent)!important;
+}
+
+.table-core.has-custom-meta b{
+  color:var(--named-ink)!important;
+  font-size:13px!important;
+  opacity:.72;
+}
+
+.table-custom-name{
+  display:block!important;
+  max-width:145px!important;
+  margin:4px auto 2px!important;
+  padding:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:var(--named-ink,#3e4933)!important;
+  font-family:'Noto Sans Thai',Manrope,sans-serif!important;
+  font-size:15px!important;
+  font-weight:800!important;
+  line-height:1.15!important;
+  letter-spacing:0!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+  word-break:break-word!important;
+}
+
+.table-custom-people{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:3px;
+  padding:3px 8px;
+  border-radius:999px;
+  background:rgba(255,255,255,.56);
+  color:var(--named-ink,#3e4933)!important;
+  font-family:'Noto Sans Thai',Manrope,sans-serif!important;
+  font-size:10px!important;
+  font-weight:800!important;
+  line-height:1!important;
+  letter-spacing:0!important;
+}
+
+.table-core.has-custom-meta > div > span:last-child{
+  display:block;
+  margin-top:4px;
+  font-size:8px!important;
+  opacity:.72;
+}
+
+/* สี Wedding soft palette — โต๊ะที่มีชื่อจะได้สีต่างกัน */
+.table-core.named-color-1{--named-bg:#e8ecd9;--named-border:#9aa67d;--named-ink:#465139}
+.table-core.named-color-2{--named-bg:#f3e4d5;--named-border:#c59d78;--named-ink:#6c503b}
+.table-core.named-color-3{--named-bg:#e5ece8;--named-border:#8daaa0;--named-ink:#405b54}
+.table-core.named-color-4{--named-bg:#eee4eb;--named-border:#b59bab;--named-ink:#654f5d}
+.table-core.named-color-5{--named-bg:#eee8d8;--named-border:#b3a373;--named-ink:#625a3b}
+.table-core.named-color-6{--named-bg:#e3e8ef;--named-border:#91a0b3;--named-ink:#48576a}
+
+/* Modal กรอกชื่อ + จำนวนคน */
+.table-meta-fields{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 130px;
+  gap:10px;
+  align-items:end;
+}
+
+.table-meta-field label{
+  display:block;
+  margin-bottom:7px;
+  color:#666b58;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.06em;
+}
+
+.table-meta-field input{
+  width:100%;
+  padding:12px 13px;
+  border:1px solid #d9d0c2;
+  border-radius:12px;
+  background:#fff;
+  color:#34382e;
+  outline:none;
+  font-size:14px;
+}
+
+.table-meta-field input:focus{
+  border-color:#9ea681;
+  box-shadow:0 0 0 3px rgba(170,176,141,.16);
+}
+
+.table-meta-save{
+  margin-top:10px;
+  width:100%;
+  font-weight:800!important;
+}
+
+@media(max-width:600px){
+  .table-custom-name{
+    max-width:100px!important;
+    font-size:12px!important;
+  }
+
+  .table-custom-people{
+    font-size:9px!important;
+    padding:3px 6px;
+  }
+
+  .table-meta-fields{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+
+
+<style id="custom-table-color-picker-v29">
+.table-color-section{
+  margin-top:12px;
+}
+
+.table-color-section-label{
+  display:block;
+  margin-bottom:8px;
+  color:#666b58;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.06em;
+}
+
+.table-color-picker{
+  display:grid;
+  grid-template-columns:repeat(8,minmax(34px,1fr));
+  gap:8px;
+}
+
+.table-color-option{
+  position:relative;
+  height:38px;
+  border-radius:12px;
+  border:2px solid rgba(90,83,70,.12);
+  cursor:pointer;
+  transition:.18s;
+  box-shadow:0 4px 10px rgba(70,61,45,.06);
+}
+
+.table-color-option:hover{
+  transform:translateY(-1px) scale(1.03);
+}
+
+.table-color-option.active{
+  border-color:#596048;
+  box-shadow:0 0 0 3px rgba(108,116,80,.16),0 6px 14px rgba(70,61,45,.10);
+}
+
+.table-color-option.active:after{
+  content:"✓";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  color:#2f3428;
+  font-size:18px;
+  font-weight:900;
+  text-shadow:0 1px 2px rgba(255,255,255,.7);
+}
+
+.table-color-none{
+  background:
+    linear-gradient(135deg,transparent 45%,#b76565 46% 54%,transparent 55%),
+    #fffdf8;
+}
+
+.table-color-sage{background:#dfe7c8}
+.table-color-olive{background:#b8c09a}
+.table-color-cream{background:#f0dfbd}
+.table-color-peach{background:#efc9ad}
+.table-color-rose{background:#e5bec5}
+.table-color-mauve{background:#d7c4d5}
+.table-color-blue{background:#c8d8e4}
+.table-color-mint{background:#c9e1d8}
+
+/* สีที่ใช้จริงบนโต๊ะ */
+.table-core.user-color-sage{--named-bg:#dfe7c8;--named-border:#8f9873;--named-ink:#37402c}
+.table-core.user-color-olive{--named-bg:#b8c09a;--named-border:#78815f;--named-ink:#30382a}
+.table-core.user-color-cream{--named-bg:#f0dfbd;--named-border:#c2a66d;--named-ink:#645236}
+.table-core.user-color-peach{--named-bg:#efc9ad;--named-border:#c99370;--named-ink:#6a4835}
+.table-core.user-color-rose{--named-bg:#e5bec5;--named-border:#b7838d;--named-ink:#65434b}
+.table-core.user-color-mauve{--named-bg:#d7c4d5;--named-border:#a68da2;--named-ink:#584655}
+.table-core.user-color-blue{--named-bg:#c8d8e4;--named-border:#849fb1;--named-ink:#3e5261}
+.table-core.user-color-mint{--named-bg:#c9e1d8;--named-border:#85aa9d;--named-ink:#3c5b51}
+
+@media(max-width:600px){
+  .table-color-picker{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -3451,12 +3879,15 @@ html,body{
 
 <script>
 const STORAGE_KEY='bn_wedding_seating_v7_compact_floorplan';
+const TABLE_NAME_KEY='bn_wedding_custom_table_names_v1';
+const TABLE_PEOPLE_KEY='bn_wedding_custom_table_people_v1';
+const TABLE_COLOR_KEY='bn_wedding_custom_table_colors_v1';
 const TABLES=[
   // indoor — คง layout เดิม เปลี่ยนเฉพาะจำนวนที่นั่งให้ครบ
   {id:'T27',zone:'indoor',shape:'rect',seats:10},{id:'T26',zone:'indoor',shape:'long',seats:14},{id:'T24',zone:'indoor',shape:'rect',seats:10},
   {id:'T28',zone:'indoor',shape:'round',seats:10},{id:'T25',zone:'indoor',shape:'long',seats:14},{id:'T23',zone:'indoor',shape:'rect',seats:10},
   {id:'T29/1',zone:'indoor',shape:'round',seats:10},{id:'T22',zone:'indoor',shape:'rect',seats:10},
-  {id:'T29/2',zone:'indoor',shape:'round',seats:10},{id:'A12',zone:'indoor',shape:'round',seats:10},
+  {id:'T29/2',zone:'indoor',shape:'round',seats:10},{id:'T21',zone:'indoor',shape:'round',seats:10},
   // outdoor — โต๊ะมาตรฐาน 10 ที่นั่ง; โต๊ะเล็กคง 6 ที่นั่งตามแปลน
   {id:'T12',zone:'outdoor',shape:'rect',seats:6},{id:'T10',zone:'outdoor',shape:'long',seats:10},{id:'T07',zone:'outdoor',shape:'round',seats:10},
   {id:'T13',zone:'outdoor',shape:'rect',seats:10},
@@ -3477,7 +3908,66 @@ const TABLES=[
 ];
 
 let data=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+let tableNames=JSON.parse(localStorage.getItem(TABLE_NAME_KEY)||'{}');
+let tablePeople=JSON.parse(localStorage.getItem(TABLE_PEOPLE_KEY)||'{}');
+let tableColors=JSON.parse(localStorage.getItem(TABLE_COLOR_KEY)||'{}');
 let activeSeat=null;
+
+function getTableName(tableId){
+  return String(tableNames[tableId]||'').trim();
+}
+
+function saveTableNames(){
+  localStorage.setItem(TABLE_NAME_KEY,JSON.stringify(tableNames));
+}
+
+function saveTablePeople(){
+  localStorage.setItem(TABLE_PEOPLE_KEY,JSON.stringify(tablePeople));
+}
+
+function saveTableColors(){
+  localStorage.setItem(TABLE_COLOR_KEY,JSON.stringify(tableColors));
+}
+
+function getTableColor(tableId){
+  return String(tableColors[tableId]||'').trim();
+}
+
+function setTableColor(tableId,color){
+  const clean=String(color||'').trim();
+  if(clean) tableColors[tableId]=clean;
+  else delete tableColors[tableId];
+  saveTableColors();
+}
+
+function getTablePeople(tableId){
+  const value=parseInt(tablePeople[tableId],10);
+  return Number.isFinite(value) && value>=0 ? value : '';
+}
+
+function setTableName(tableId,name){
+  const clean=String(name||'').trim();
+  if(clean) tableNames[tableId]=clean;
+  else delete tableNames[tableId];
+  saveTableNames();
+}
+
+function setTablePeople(tableId,people){
+  const raw=String(people??'').trim();
+  if(raw===''){
+    delete tablePeople[tableId];
+  }else{
+    const n=Math.max(0,parseInt(raw,10)||0);
+    tablePeople[tableId]=n;
+  }
+  saveTablePeople();
+}
+
+function tableColorIndex(tableId){
+  let hash=0;
+  for(let i=0;i<tableId.length;i++) hash=(hash*31+tableId.charCodeAt(i))>>>0;
+  return (hash%6)+1;
+}
 
 function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(data));document.getElementById('saveState').textContent='Saved in this browser ✓';updateStats();renderGuestList();}
 function seatKey(table,seat){return `${table}-${seat}`}
@@ -3557,7 +4047,30 @@ function renderTable(t){
   const unit=document.createElement('div');unit.className='table-unit';unit.dataset.table=t.id;
   const core=document.createElement('div');core.className=`table-core ${t.shape}`;
   const count=Array.from({length:t.seats},(_,i)=>seatRecord(t.id,i+1)).filter(x=>x.name).length;
-  core.innerHTML=`<div><b>${t.id}</b><br><span>${count}/${t.seats} assigned</span></div>`;
+  const customName=getTableName(t.id);
+  const customPeople=getTablePeople(t.id);
+  const customColor=getTableColor(t.id);
+  const hasCustomMeta=!!customName || customPeople!=='' || !!customColor;
+
+  if(hasCustomMeta){
+    core.classList.add('has-custom-meta');
+    if(customColor){
+      core.classList.add(`user-color-${customColor}`);
+    }else{
+      core.classList.add(`named-color-${tableColorIndex(t.id)}`);
+    }
+  }
+
+  core.innerHTML=`<div>
+    <b>${t.id}</b>
+    ${customName
+      ? `<strong class="table-custom-name" title="${escapeHtml(customName)}">${escapeHtml(customName)}</strong>`
+      : '<br>'}
+    ${customPeople!==''
+      ? `<span class="table-custom-people">👥 ${customPeople} คน</span>`
+      : ''}
+    <span>${count}/${t.seats} assigned</span>
+  </div>`;
   core.onclick=()=>openTable(t.id);
   const chairs=document.createElement('div');chairs.className='chairs';
   seatPositions(t.seats,t.shape).forEach((p,idx)=>{
@@ -3612,10 +4125,151 @@ document.getElementById('removeSeat').onclick=()=>{if(!activeSeat)return;delete 
 document.getElementById('guestName').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('saveSeat').click()});
 
 function openTable(tableId){
-  const t=TABLES.find(x=>x.id===tableId);document.getElementById('tableModalTitle').textContent=`โต๊ะ ${tableId} — ${zoneName(t.zone)}`;
-  const rows=[];for(let i=1;i<=t.seats;i++){const r=seatRecord(tableId,i);rows.push(`<div class="guest-item" onclick="closeModals();openSeat('${tableId}',${i})"><b>${i}. ${r.name?escapeHtml(r.name):'<span style="color:#607387">ที่นั่งว่าง</span>'}</b><small>${r.group?escapeHtml(r.group):''}${r.note?' • '+escapeHtml(r.note):''}</small></div>`)}
-  document.getElementById('tableModalBody').innerHTML=`<div style="display:flex;justify-content:space-between;margin-bottom:12px;color:var(--muted);font-size:12px"><span>${t.seats} ที่นั่ง</span><span>${rows.filter((_,i)=>seatRecord(tableId,i+1).name).length} assigned</span></div><div class="guest-list" style="max-height:520px">${rows.join('')}</div>`;
+  pendingTableColor=null;
+  const t=TABLES.find(x=>x.id===tableId);
+  const customName=getTableName(tableId);
+  const customPeople=getTablePeople(tableId);
+  const customColor=getTableColor(tableId);
+
+  document.getElementById('tableModalTitle').textContent=
+    `โต๊ะ ${tableId}${customName?' • '+customName:''}${customPeople!==''?' • '+customPeople+' คน':''} — ${zoneName(t.zone)}`;
+
+  const rows=[];
+  for(let i=1;i<=t.seats;i++){
+    const r=seatRecord(tableId,i);
+    rows.push(
+      `<div class="guest-item" onclick="closeModals();openSeat('${tableId}',${i})">`+
+      `<b>${i}. ${r.name?escapeHtml(r.name):'<span style="color:#607387">ที่นั่งว่าง</span>'}</b>`+
+      `<small>${r.group?escapeHtml(r.group):''}${r.note?' • '+escapeHtml(r.note):''}</small>`+
+      `</div>`
+    );
+  }
+
+  document.getElementById('tableModalBody').innerHTML=`
+    <div class="table-name-editor">
+      <div class="table-meta-fields">
+        <div class="table-meta-field">
+          <label>🏷️ ชื่อโต๊ะ / หมวดหมู่</label>
+          <input
+            id="customTableNameInput"
+            type="text"
+            maxlength="60"
+            value="${escapeHtml(customName)}"
+            placeholder="เช่น ญาติฝ่ายเจ้าบ่าว / เพื่อนมหาวิทยาลัย / ทีม IT"
+          >
+        </div>
+
+        <div class="table-meta-field">
+          <label>👥 จำนวนคน</label>
+          <input
+            id="customTablePeopleInput"
+            type="number"
+            min="0"
+            max="99"
+            inputmode="numeric"
+            value="${customPeople!==''?customPeople:''}"
+            placeholder="${t.seats}"
+          >
+        </div>
+      </div>
+
+      <div class="table-color-section">
+        <span class="table-color-section-label">🎨 สีโต๊ะ</span>
+        <div class="table-color-picker">
+          ${[
+            ['','ไม่กำหนดสี','table-color-none'],
+            ['sage','Sage','table-color-sage'],
+            ['olive','Olive','table-color-olive'],
+            ['cream','Cream','table-color-cream'],
+            ['peach','Peach','table-color-peach'],
+            ['rose','Rose','table-color-rose'],
+            ['mauve','Mauve','table-color-mauve'],
+            ['blue','Blue','table-color-blue'],
+            ['mint','Mint','table-color-mint']
+          ].map(([value,label,cls])=>`
+            <button
+              type="button"
+              class="table-color-option ${cls} ${customColor===value?'active':''}"
+              data-table-color="${value}"
+              title="${label}"
+              aria-label="${label}"
+              onclick="selectTableColor('${tableId}','${value}',this)"
+            ></button>
+          `).join('')}
+        </div>
+      </div>
+
+      <button class="btn gold table-meta-save" type="button" onclick="saveCustomTableName('${tableId}')">
+        ✓ บันทึกชื่อโต๊ะ จำนวนคน และสี
+      </button>
+
+      <small>
+        รหัสโต๊ะ ${tableId} และจำนวนเก้าอี้จริง ${t.seats} ที่นั่งจะยังคงเดิม —
+        ช่อง “จำนวนคน” ใช้สำหรับระบุจำนวนแขกของกลุ่ม/หมวดนี้
+      </small>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;margin-bottom:12px;color:var(--muted);font-size:12px">
+      <span>${t.seats} ที่นั่ง</span>
+      <span>${rows.filter((_,i)=>seatRecord(tableId,i+1).name).length} assigned</span>
+    </div>
+
+    <div class="guest-list" style="max-height:520px">${rows.join('')}</div>
+  `;
+
   document.getElementById('tableModal').classList.add('open');
+
+  setTimeout(()=>{
+    const inputs=[
+      document.getElementById('customTableNameInput'),
+      document.getElementById('customTablePeopleInput')
+    ].filter(Boolean);
+
+    inputs.forEach(input=>{
+      input.addEventListener('keydown',e=>{
+        if(e.key==='Enter'){
+          e.preventDefault();
+          saveCustomTableName(tableId);
+        }
+      });
+    });
+  },0);
+}
+
+
+let pendingTableColor=null;
+
+function selectTableColor(tableId,color,button){
+  pendingTableColor=color;
+  document.querySelectorAll('#tableModal .table-color-option').forEach(el=>el.classList.remove('active'));
+  if(button) button.classList.add('active');
+}
+
+function saveCustomTableName(tableId){
+  const nameInput=document.getElementById('customTableNameInput');
+  const peopleInput=document.getElementById('customTablePeopleInput');
+  if(!nameInput) return;
+
+  setTableName(tableId,nameInput.value);
+  setTablePeople(tableId,peopleInput?peopleInput.value:'');
+
+  // ถ้ายังไม่ได้คลิกเลือกสีใหม่ ให้คงสีเดิม
+  if(pendingTableColor!==null){
+    setTableColor(tableId,pendingTableColor);
+  }
+
+  pendingTableColor=null;
+  render();
+
+  const customName=getTableName(tableId);
+  const customPeople=getTablePeople(tableId);
+
+  let msg=`บันทึกโต๊ะ ${tableId} แล้ว`;
+  if(customName) msg+=` • ${customName}`;
+  if(customPeople!=='') msg+=` • ${customPeople} คน`;
+  toast(msg);
+
+  openTable(tableId);
 }
 
 function updateStats(){
@@ -3626,8 +4280,15 @@ function getGuests(){
   return Object.entries(data).filter(([,r])=>r&&r.name).map(([key,r])=>{const m=key.match(/^(.+)-(\d+)$/);const t=TABLES.find(x=>x.id===m[1]);return {...r,key,table:m[1],seat:+m[2],zone:t?.zone||''}}).sort((a,b)=>a.name.localeCompare(b.name,'th'));
 }
 function renderGuestList(){
-  const q=(searchInput.value||'').trim().toLowerCase();const guests=getGuests().filter(g=>(g.name+' '+g.group+' '+g.note+' '+g.table).toLowerCase().includes(q));
-  guestList.innerHTML=guests.length?guests.map(g=>`<div class="guest-item" data-jump="${g.key}"><b>${escapeHtml(g.name)}</b><small>โต๊ะ ${g.table} • ที่นั่ง ${g.seat}${g.group?' • '+escapeHtml(g.group):''}</small></div>`).join(''):`<div class="empty">${q?'ไม่พบรายชื่อที่ค้นหา':'ยังไม่มีรายชื่อแขก'}</div>`;
+  const q=(searchInput.value||'').trim().toLowerCase();
+  const guests=getGuests().filter(g=>{
+    const tableName=getTableName(g.table);
+    return (g.name+' '+g.group+' '+g.note+' '+g.table+' '+tableName).toLowerCase().includes(q);
+  });
+  guestList.innerHTML=guests.length?guests.map(g=>{
+    const tableName=getTableName(g.table);
+    return `<div class="guest-item" data-jump="${g.key}"><b>${escapeHtml(g.name)}</b><small>โต๊ะ ${g.table}${tableName?' • '+escapeHtml(tableName):''} • ที่นั่ง ${g.seat}${g.group?' • '+escapeHtml(g.group):''}</small></div>`;
+  }).join(''):`<div class="empty">${q?'ไม่พบรายชื่อที่ค้นหา':'ยังไม่มีรายชื่อแขก'}</div>`;
   guestList.querySelectorAll('[data-jump]').forEach(el=>el.onclick=()=>jumpToSeat(el.dataset.jump));
 }
 searchInput.oninput=renderGuestList;
@@ -3656,6 +4317,9 @@ document.getElementById('exportBtn').onclick=()=>{
           'ลำดับ': no++,
           'โซน': zoneName(table.zone),
           'โต๊ะ': table.id,
+          'ชื่อโต๊ะ / หมวดหมู่': getTableName(table.id),
+          'จำนวนคน (กำหนดเอง)': getTablePeople(table.id),
+          'สีโต๊ะ': getTableColor(table.id),
           'ที่นั่ง': seat,
           'ชื่อแขก': hasGuest ? rec.name : 'ว่าง',
           'กลุ่ม': hasGuest ? (rec.group || '') : '',
@@ -3681,6 +4345,9 @@ document.getElementById('exportBtn').onclick=()=>{
         'ลำดับ': index+1,
         'โซน': zoneName(table.zone),
         'โต๊ะ': table.id,
+        'ชื่อโต๊ะ / หมวดหมู่': getTableName(table.id),
+        'จำนวนคน (กำหนดเอง)': getTablePeople(table.id),
+        'สีโต๊ะ': getTableColor(table.id),
         'จำนวนที่นั่ง': table.seats,
         'มีแขกแล้ว': assigned,
         'ว่าง': table.seats-assigned,
@@ -3695,13 +4362,14 @@ document.getElementById('exportBtn').onclick=()=>{
       {wch:8},
       {wch:24},
       {wch:12},
+      {wch:28},
       {wch:10},
       {wch:30},
       {wch:22},
       {wch:36}
     ];
     if(seatRows.length){
-      wsSeats['!autofilter']={ref:`A1:G${seatRows.length+1}`};
+      wsSeats['!autofilter']={ref:`A1:H${seatRows.length+1}`};
     }
     XLSX.utils.book_append_sheet(wb,wsSeats,'ที่นั่งทั้งหมด');
 
@@ -3710,13 +4378,14 @@ document.getElementById('exportBtn').onclick=()=>{
       {wch:8},
       {wch:24},
       {wch:12},
+      {wch:28},
       {wch:14},
       {wch:12},
       {wch:10},
       {wch:80}
     ];
     if(tableRows.length){
-      wsTables['!autofilter']={ref:`A1:G${tableRows.length+1}`};
+      wsTables['!autofilter']={ref:`A1:H${tableRows.length+1}`};
     }
     XLSX.utils.book_append_sheet(wb,wsTables,'สรุปตามโต๊ะ');
 
@@ -3795,6 +4464,26 @@ importFile.onchange=async()=>{
 
       const seat=parseInt(String(seatRaw).trim(),10);
 
+      const customTableName=String(
+        row['ชื่อโต๊ะ / หมวดหมู่'] ??
+        row['หมวดหมู่โต๊ะ'] ??
+        row['Table Name'] ??
+        ''
+      ).trim();
+
+      const customTablePeople=String(
+        row['จำนวนคน (กำหนดเอง)'] ??
+        row['จำนวนคน'] ??
+        row['People'] ??
+        ''
+      ).trim();
+
+      const customTableColor=String(
+        row['สีโต๊ะ'] ??
+        row['Table Color'] ??
+        ''
+      ).trim().toLowerCase();
+
       const name=String(
         row['ชื่อแขก'] ??
         row['ชื่อ'] ??
@@ -3829,6 +4518,19 @@ importFile.onchange=async()=>{
 
       const key=seatKey(table.id,seat);
 
+      // ถ้ามีชื่อโต๊ะ/หมวดหมู่ใน Excel ให้ทับชื่อโต๊ะในระบบด้วย
+      if(customTableName){
+        tableNames[table.id]=customTableName;
+      }
+      if(customTablePeople!==''){
+        const n=parseInt(customTablePeople,10);
+        if(Number.isFinite(n) && n>=0) tablePeople[table.id]=n;
+      }
+
+      if(['sage','olive','cream','peach','rose','mauve','blue','mint'].includes(customTableColor)){
+        tableColors[table.id]=customTableColor;
+      }
+
       // Excel ถือเป็นข้อมูลล่าสุด:
       // ถ้าชื่อเป็น "ว่าง" หรือช่องว่าง ให้ล้างคนที่นั่งเดิมออก
       if(!name || name==='ว่าง' || name.toLowerCase()==='empty'){
@@ -3851,6 +4553,9 @@ importFile.onchange=async()=>{
     });
 
     // บันทึกลง LocalStorage และ Refresh UI ทันที
+    saveTableNames();
+    saveTablePeople();
+    saveTableColors();
     save();
     render();
 
@@ -4106,6 +4811,21 @@ function drawTableCardComplete(ctx,t,x,y,w,h){
   ctx.fillStyle='#596048';
   ctx.font='600 28px "Bodoni Moda","Noto Sans Thai",serif';
   ctx.fillText(t.id,x+22,y+38);
+
+  const customTableName=getTableName(t.id);
+  const customTablePeople=getTablePeople(t.id);
+
+  if(customTableName){
+    ctx.fillStyle='#566044';
+    ctx.font='700 16px "Noto Sans Thai","Manrope",sans-serif';
+    ctx.fillText(truncateCanvasText(ctx,customTableName,220),x+22,y+60);
+  }
+
+  if(customTablePeople!==''){
+    ctx.fillStyle='#8a806e';
+    ctx.font='600 12px "Noto Sans Thai","Manrope",sans-serif';
+    ctx.fillText(`${customTablePeople} คน`,x+22,y+78);
+  }
 
   ctx.fillStyle='#938b7c';
   ctx.font='500 14px "Noto Sans Thai","Manrope",sans-serif';
