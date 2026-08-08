@@ -3720,6 +3720,203 @@ html,body{
 }
 </style>
 
+
+<style id="table-modal-fit-screen-v30">
+/* =========================================================
+   TABLE MODAL — fit screen + compact color row
+   แก้เฉพาะหน้าต่างตั้งชื่อโต๊ะ/จำนวนคน/สี
+   ========================================================= */
+
+/* Modal ทั้งกล่องต้องไม่เกินจอ */
+#tableModal{
+  padding:12px!important;
+  overflow:auto!important;
+}
+
+#tableModal .dialog{
+  width:min(560px,calc(100vw - 24px))!important;
+  max-width:calc(100vw - 24px)!important;
+  max-height:calc(100dvh - 24px)!important;
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+}
+
+/* หัว modal คงที่ ไม่ยืด */
+#tableModal .dialog-head{
+  flex:0 0 auto!important;
+  padding:14px 16px!important;
+}
+
+/* เนื้อหาด้านใน scroll เอง */
+#tableModal .dialog-body{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow:auto!important;
+  padding:14px 16px 16px!important;
+}
+
+/* กล่องตั้งชื่อโต๊ะให้กระชับ */
+#tableModal .table-name-editor{
+  margin-bottom:10px!important;
+  padding:12px!important;
+  border-radius:14px!important;
+}
+
+/* ชื่อโต๊ะ + จำนวนคน ไม่กว้างเกิน */
+#tableModal .table-meta-fields{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 104px!important;
+  gap:8px!important;
+}
+
+#tableModal .table-meta-field{
+  min-width:0!important;
+}
+
+#tableModal .table-meta-field input{
+  width:100%!important;
+  min-width:0!important;
+  padding:9px 10px!important;
+  font-size:12px!important;
+  border-radius:10px!important;
+}
+
+/* แถวเลือกสีให้เล็กลง */
+#tableModal .table-color-section{
+  margin-top:8px!important;
+}
+
+#tableModal .table-color-section-label{
+  margin-bottom:5px!important;
+  font-size:9px!important;
+}
+
+#tableModal .table-color-picker{
+  display:flex!important;
+  flex-wrap:wrap!important;
+  gap:6px!important;
+}
+
+#tableModal .table-color-option{
+  flex:0 0 32px!important;
+  width:32px!important;
+  height:28px!important;
+  border-radius:9px!important;
+  border-width:1px!important;
+}
+
+#tableModal .table-color-option.active{
+  box-shadow:0 0 0 2px rgba(108,116,80,.14)!important;
+}
+
+#tableModal .table-color-option.active:after{
+  font-size:14px!important;
+}
+
+/* ปุ่มบันทึกเตี้ยลง */
+#tableModal .table-meta-save{
+  margin-top:8px!important;
+  min-height:36px!important;
+  padding:8px 12px!important;
+  font-size:10px!important;
+}
+
+/* ข้อความช่วยอธิบายเล็กลง */
+#tableModal .table-name-editor small{
+  margin-top:6px!important;
+  font-size:8px!important;
+  line-height:1.35!important;
+}
+
+/* รายชื่อเก้าอี้ไม่ทำให้ modal ยาวทะลุจอ */
+#tableModal .guest-list{
+  max-height:38dvh!important;
+  overflow:auto!important;
+  gap:6px!important;
+}
+
+#tableModal .guest-item{
+  padding:9px 10px!important;
+  border-radius:12px!important;
+}
+
+/* Tablet / Mobile */
+@media(max-width:700px){
+  #tableModal{
+    padding:8px!important;
+    align-items:center!important;
+  }
+
+  #tableModal .dialog{
+    width:calc(100vw - 16px)!important;
+    max-width:calc(100vw - 16px)!important;
+    max-height:calc(100dvh - 16px)!important;
+    border-radius:20px!important;
+  }
+
+  #tableModal .dialog-head{
+    padding:12px 13px!important;
+  }
+
+  #tableModal .dialog-head h3{
+    font-size:20px!important;
+    line-height:1.2!important;
+  }
+
+  #tableModal .dialog-body{
+    padding:10px 12px 12px!important;
+  }
+
+  #tableModal .table-name-editor{
+    padding:10px!important;
+  }
+
+  #tableModal .table-meta-fields{
+    grid-template-columns:minmax(0,1fr) 86px!important;
+    gap:6px!important;
+  }
+
+  #tableModal .table-meta-field label{
+    font-size:8px!important;
+    margin-bottom:4px!important;
+  }
+
+  #tableModal .table-meta-field input{
+    padding:8px 9px!important;
+    font-size:11px!important;
+  }
+
+  #tableModal .table-color-picker{
+    gap:5px!important;
+  }
+
+  #tableModal .table-color-option{
+    flex:0 0 28px!important;
+    width:28px!important;
+    height:24px!important;
+    border-radius:8px!important;
+  }
+
+  #tableModal .guest-list{
+    max-height:34dvh!important;
+  }
+}
+
+/* มือถือเล็กมาก */
+@media(max-width:390px){
+  #tableModal .table-meta-fields{
+    grid-template-columns:minmax(0,1fr) 76px!important;
+  }
+
+  #tableModal .table-color-option{
+    flex-basis:26px!important;
+    width:26px!important;
+    height:22px!important;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
