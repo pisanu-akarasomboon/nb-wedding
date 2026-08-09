@@ -810,17 +810,17 @@ h1 .amp{color:var(--olive)!important}
 }
 
 /* Left side */
-#zoneIndoor .table-unit[data-table="T27"]{grid-column:1;grid-row:1}
-#zoneIndoor .table-unit[data-table="T28"]{grid-column:1;grid-row:2}
-#zoneIndoor .table-unit[data-table="T29/1"]{grid-column:1;grid-row:3}
-#zoneIndoor .table-unit[data-table="T29/2"]{grid-column:1;grid-row:4}
+#zoneIndoor .table-unit[data-table="T29/3"]{grid-column:1;grid-row:1}
+#zoneIndoor .table-unit[data-table="T29/1"]{grid-column:1;grid-row:2}
+#zoneIndoor .table-unit[data-table="T29"]{grid-column:1;grid-row:3}
+#zoneIndoor .table-unit[data-table="T28"]{grid-column:1;grid-row:4}
 
 /* Middle: ONLY TWO long tables, stacked vertically */
-#zoneIndoor .table-unit[data-table="T26"]{
+#zoneIndoor .table-unit[data-table="T25"]{
   grid-column:2;
   grid-row:1 / span 2;
 }
-#zoneIndoor .table-unit[data-table="T25"]{
+#zoneIndoor .table-unit[data-table="T27"]{
   grid-column:2;
   grid-row:3 / span 2;
 }
@@ -832,14 +832,14 @@ h1 .amp{color:var(--olive)!important}
 #zoneIndoor .table-unit[data-table="T21"]{grid-column:3;grid-row:4}
 
 /* Both long tables must be exactly the same size */
-#zoneIndoor .table-unit[data-table="T26"],
-#zoneIndoor .table-unit[data-table="T25"]{
+#zoneIndoor .table-unit[data-table="T25"],
+#zoneIndoor .table-unit[data-table="T27"]{
   min-height:520px!important;
   height:520px!important;
 }
 
-#zoneIndoor .table-unit[data-table="T26"] .table-core,
-#zoneIndoor .table-unit[data-table="T25"] .table-core{
+#zoneIndoor .table-unit[data-table="T25"] .table-core,
+#zoneIndoor .table-unit[data-table="T27"] .table-core{
   width:78px!important;
   height:360px!important;
   border-radius:12px!important;
@@ -847,8 +847,8 @@ h1 .amp{color:var(--olive)!important}
 
 /* 14-seat long table = 6 seats each side + head + foot.
    Give chairs more room around the long body. */
-#zoneIndoor .table-unit[data-table="T26"] .chairs,
-#zoneIndoor .table-unit[data-table="T25"] .chairs{
+#zoneIndoor .table-unit[data-table="T25"] .chairs,
+#zoneIndoor .table-unit[data-table="T27"] .chairs{
   inset:22px 0!important;
 }
 
@@ -879,13 +879,13 @@ h1 .amp{color:var(--olive)!important}
     min-width:510px!important;
     min-height:1020px!important;
   }
-  #zoneIndoor .table-unit[data-table="T26"],
-  #zoneIndoor .table-unit[data-table="T25"]{
+  #zoneIndoor .table-unit[data-table="T25"],
+  #zoneIndoor .table-unit[data-table="T27"]{
     min-height:470px!important;
     height:470px!important;
   }
-  #zoneIndoor .table-unit[data-table="T26"] .table-core,
-  #zoneIndoor .table-unit[data-table="T25"] .table-core{
+  #zoneIndoor .table-unit[data-table="T25"] .table-core,
+  #zoneIndoor .table-unit[data-table="T27"] .table-core{
     width:72px!important;
     height:330px!important;
   }
@@ -922,7 +922,7 @@ h1 .amp{color:var(--olive)!important}
 
 /* ---------- ลานออมชอม ---------- */
 /* 4 แถวพอดีกับ A01/A04/A07/A10 และ A03/A06/A09/T21
-   T26 + T25 อยู่กลางและต่อกัน */
+   T25 + T27 อยู่กลางและต่อกัน */
 #zoneIndoor .tables{
   display:grid!important;
   grid-template-columns:1fr 180px 1fr!important;
@@ -935,17 +935,17 @@ h1 .amp{color:var(--olive)!important}
 }
 
 /* ซ้าย */
-#zoneIndoor .table-unit[data-table="T27"]{grid-column:1!important;grid-row:1!important}
-#zoneIndoor .table-unit[data-table="T28"]{grid-column:1!important;grid-row:2!important}
-#zoneIndoor .table-unit[data-table="T29/1"]{grid-column:1!important;grid-row:3!important}
-#zoneIndoor .table-unit[data-table="T29/2"]{grid-column:1!important;grid-row:4!important}
+#zoneIndoor .table-unit[data-table="T29/3"]{grid-column:1!important;grid-row:1!important}
+#zoneIndoor .table-unit[data-table="T29/1"]{grid-column:1!important;grid-row:2!important}
+#zoneIndoor .table-unit[data-table="T29"]{grid-column:1!important;grid-row:3!important}
+#zoneIndoor .table-unit[data-table="T28"]{grid-column:1!important;grid-row:4!important}
 
-/* กลาง: T26 ต่อ T25 */
-#zoneIndoor .table-unit[data-table="T26"]{
+/* กลาง: T25 ต่อ T27 */
+#zoneIndoor .table-unit[data-table="T25"]{
   grid-column:2!important;
   grid-row:1 / span 2!important;
 }
-#zoneIndoor .table-unit[data-table="T25"]{
+#zoneIndoor .table-unit[data-table="T27"]{
   grid-column:2!important;
   grid-row:3 / span 2!important;
 }
@@ -956,25 +956,25 @@ h1 .amp{color:var(--olive)!important}
 #zoneIndoor .table-unit[data-table="T22"]{grid-column:3!important;grid-row:3!important}
 #zoneIndoor .table-unit[data-table="T21"]{grid-column:3!important;grid-row:4!important}
 
-/* T26 / T25 สูงเท่ากัน และชิดกัน */
-#zoneIndoor .table-unit[data-table="T26"],
-#zoneIndoor .table-unit[data-table="T25"]{
+/* T25 / T27 สูงเท่ากัน และชิดกัน */
+#zoneIndoor .table-unit[data-table="T25"],
+#zoneIndoor .table-unit[data-table="T27"]{
   min-height:380px!important;
   height:380px!important;
   margin:0!important;
   align-self:stretch!important;
 }
 
-#zoneIndoor .table-unit[data-table="T26"] .table-core,
-#zoneIndoor .table-unit[data-table="T25"] .table-core{
+#zoneIndoor .table-unit[data-table="T25"] .table-core,
+#zoneIndoor .table-unit[data-table="T27"] .table-core{
   width:78px!important;
   height:300px!important;
   border-radius:12px!important;
 }
 
 /* เก้าอี้ 14 ที่นั่งมีพื้นที่รอบโต๊ะครบ */
-#zoneIndoor .table-unit[data-table="T26"] .chairs,
-#zoneIndoor .table-unit[data-table="T25"] .chairs{
+#zoneIndoor .table-unit[data-table="T25"] .chairs,
+#zoneIndoor .table-unit[data-table="T27"] .chairs{
   inset:4px 0!important;
 }
 
@@ -1054,14 +1054,14 @@ h1 .amp{color:var(--olive)!important}
     row-gap:0!important;
   }
 
-  #zoneIndoor .table-unit[data-table="T26"],
-  #zoneIndoor .table-unit[data-table="T25"]{
+  #zoneIndoor .table-unit[data-table="T25"],
+  #zoneIndoor .table-unit[data-table="T27"]{
     min-height:344px!important;
     height:344px!important;
   }
 
-  #zoneIndoor .table-unit[data-table="T26"] .table-core,
-  #zoneIndoor .table-unit[data-table="T25"] .table-core{
+  #zoneIndoor .table-unit[data-table="T25"] .table-core,
+  #zoneIndoor .table-unit[data-table="T27"] .table-core{
     width:72px!important;
     height:272px!important;
   }
@@ -1096,8 +1096,8 @@ h1 .amp{color:var(--olive)!important}
 }
 
 /* A02/A05 มี CSS เดิมเฉพาะตัวอยู่แล้ว ให้ขยายพื้นที่รอบเก้าอี้อีกเล็กน้อย */
-#zoneIndoor .table-unit[data-table="T26"] .chairs,
-#zoneIndoor .table-unit[data-table="T25"] .chairs{
+#zoneIndoor .table-unit[data-table="T25"] .chairs,
+#zoneIndoor .table-unit[data-table="T27"] .chairs{
   inset:-5px -6px!important;
 }
 
@@ -1142,7 +1142,7 @@ h1 .amp{color:var(--olive)!important}
   grid-column:2!important;
   grid-row:1!important;
 }
-#zoneOutdoor .table-unit[data-table="T07"]{
+#zoneOutdoor .table-unit[data-table="T08"]{
   grid-column:3!important;
   grid-row:1!important;
 }
@@ -1156,7 +1156,7 @@ h1 .amp{color:var(--olive)!important}
   grid-column:2!important;
   grid-row:2!important;
 }
-#zoneOutdoor .table-unit[data-table="T06"]{
+#zoneOutdoor .table-unit[data-table="T07"]{
   grid-column:3!important;
   grid-row:2!important;
 }
@@ -1166,7 +1166,7 @@ h1 .amp{color:var(--olive)!important}
   grid-column:1!important;
   grid-row:3!important;
 }
-#zoneOutdoor .table-unit[data-table="T08"]{
+#zoneOutdoor .table-unit[data-table="T06"]{
   grid-column:2 / span 2!important;
   grid-row:3!important;
   width:72%!important;
@@ -1199,7 +1199,7 @@ h1 .amp{color:var(--olive)!important}
   height:62px!important;
 }
 
-#zoneOutdoor .table-unit[data-table="T08"] .table-core{
+#zoneOutdoor .table-unit[data-table="T06"] .table-core{
   width:168px!important;
   height:62px!important;
 }
@@ -1210,8 +1210,8 @@ h1 .amp{color:var(--olive)!important}
   height:138px!important;
 }
 
-#zoneOutdoor .table-unit[data-table="T07"] .table-core,
-#zoneOutdoor .table-unit[data-table="T06"] .table-core{
+#zoneOutdoor .table-unit[data-table="T08"] .table-core,
+#zoneOutdoor .table-unit[data-table="T07"] .table-core{
   width:88px!important;
   height:88px!important;
 }
@@ -1233,8 +1233,8 @@ h1 .amp{color:var(--olive)!important}
   inset:-4px!important;
 }
 
-/* T08 กว้างกว่าโต๊ะอื่น ให้เก้าอี้กระจายเต็มแนวโต๊ะ */
-#zoneOutdoor .table-unit[data-table="T08"] .chairs{
+/* T06 กว้างกว่าโต๊ะอื่น ให้เก้าอี้กระจายเต็มแนวโต๊ะ */
+#zoneOutdoor .table-unit[data-table="T06"] .chairs{
   inset:-7px -18px!important;
 }
 
@@ -1271,7 +1271,7 @@ h1 .amp{color:var(--olive)!important}
     row-gap:4px!important;
   }
 
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     width:76%!important;
   }
 }
@@ -2670,14 +2670,14 @@ html,body{
     min-height:700px!important;
   }
 
-  #zoneIndoor .table-unit[data-table="T26"],
-  #zoneIndoor .table-unit[data-table="T25"]{
+  #zoneIndoor .table-unit[data-table="T25"],
+  #zoneIndoor .table-unit[data-table="T27"]{
     height:350px!important;
     min-height:350px!important;
   }
 
-  #zoneIndoor .table-unit[data-table="T26"] .table-core,
-  #zoneIndoor .table-unit[data-table="T25"] .table-core{
+  #zoneIndoor .table-unit[data-table="T25"] .table-core,
+  #zoneIndoor .table-unit[data-table="T27"] .table-core{
     width:70px!important;
     height:275px!important;
   }
@@ -2785,14 +2785,14 @@ html,body{
     min-height:145px!important;
   }
 
-  #zoneIndoor .table-unit[data-table="T26"],
-  #zoneIndoor .table-unit[data-table="T25"]{
+  #zoneIndoor .table-unit[data-table="T25"],
+  #zoneIndoor .table-unit[data-table="T27"]{
     height:306px!important;
     min-height:306px!important;
   }
 
-  #zoneIndoor .table-unit[data-table="T26"] .table-core,
-  #zoneIndoor .table-unit[data-table="T25"] .table-core{
+  #zoneIndoor .table-unit[data-table="T25"] .table-core,
+  #zoneIndoor .table-unit[data-table="T27"] .table-core{
     width:56px!important;
     height:232px!important;
   }
@@ -2834,8 +2834,8 @@ html,body{
     inset:4px!important;
   }
 
-  #zoneIndoor .table-unit[data-table="T26"] .chairs,
-  #zoneIndoor .table-unit[data-table="T25"] .chairs{
+  #zoneIndoor .table-unit[data-table="T25"] .chairs,
+  #zoneIndoor .table-unit[data-table="T27"] .chairs{
     inset:8px 2px!important;
   }
 
@@ -2851,11 +2851,11 @@ html,body{
     min-height:610px!important;
   }
 
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     width:92%!important;
   }
 
-  #zoneOutdoor .table-unit[data-table="T08"] .table-core{
+  #zoneOutdoor .table-unit[data-table="T06"] .table-core{
     width:118px!important;
     height:52px!important;
   }
@@ -2974,7 +2974,7 @@ html,body{
   grid-column:2!important;
   grid-row:1!important;
 }
-#zoneOutdoor .table-unit[data-table="T07"]{
+#zoneOutdoor .table-unit[data-table="T08"]{
   grid-column:3!important;
   grid-row:1!important;
 }
@@ -2982,11 +2982,11 @@ html,body{
   grid-column:2!important;
   grid-row:2!important;
 }
-#zoneOutdoor .table-unit[data-table="T06"]{
+#zoneOutdoor .table-unit[data-table="T07"]{
   grid-column:3!important;
   grid-row:2!important;
 }
-#zoneOutdoor .table-unit[data-table="T08"]{
+#zoneOutdoor .table-unit[data-table="T06"]{
   grid-column:2 / span 2!important;
   grid-row:3!important;
   width:72%!important;
@@ -3090,19 +3090,19 @@ html,body{
 
 
 <style id="b08-spacing-fix-v18">
-/* เพิ่มระยะห่าง T08 จาก B05/B06 โดยไม่แก้ส่วนอื่น */
-#zoneOutdoor .table-unit[data-table="T08"]{
+/* เพิ่มระยะห่าง T06 จาก B05/B06 โดยไม่แก้ส่วนอื่น */
+#zoneOutdoor .table-unit[data-table="T06"]{
   transform:translateY(34px)!important;
 }
 
 @media(max-width:900px){
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     transform:translateY(30px)!important;
   }
 }
 
 @media(max-width:600px){
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     transform:translateY(26px)!important;
   }
 }
@@ -3115,8 +3115,8 @@ html,body{
   transform:translateY(40px)!important;
 }
 
-/* ให้ T08 ซึ่งอยู่แถวถัดไปคงช่องไฟสวยงามจาก B05/B06 */
-#zoneOutdoor .table-unit[data-table="T08"]{
+/* ให้ T06 ซึ่งอยู่แถวถัดไปคงช่องไฟสวยงามจาก B05/B06 */
+#zoneOutdoor .table-unit[data-table="T06"]{
   transform:translateY(40px)!important;
 }
 
@@ -3124,7 +3124,7 @@ html,body{
   #zoneOutdoor .table-unit[data-table="T09"]{
     transform:translateY(36px)!important;
   }
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     transform:translateY(36px)!important;
   }
 }
@@ -3133,7 +3133,7 @@ html,body{
   #zoneOutdoor .table-unit[data-table="T09"]{
     transform:translateY(32px)!important;
   }
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     transform:translateY(32px)!important;
   }
 }
@@ -3141,28 +3141,28 @@ html,body{
 
 
 <style id="b08-extra-spacing-v20">
-/* ===== ขยับ T08 ลงเพิ่มจาก T09 ให้มีช่องไฟชัดเจน ===== */
-#zoneOutdoor .table-unit[data-table="T08"]{
+/* ===== ขยับ T06 ลงเพิ่มจาก T09 ให้มีช่องไฟชัดเจน ===== */
+#zoneOutdoor .table-unit[data-table="T06"]{
   transform:translateY(78px)!important;
 }
 
 /* Tablet */
 @media(max-width:900px){
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     transform:translateY(66px)!important;
   }
 }
 
 /* Mobile */
 @media(max-width:600px){
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     transform:translateY(54px)!important;
   }
 }
 
 /* จอเล็กมาก */
 @media(max-width:390px){
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     transform:translateY(48px)!important;
   }
 }
@@ -3279,14 +3279,14 @@ html,body{
 
 
 <style id="mobile-t10-t07-t09-t06-spacing-v24">
-/* Mobile: เพิ่มระยะห่างแนวตั้งของกลุ่ม T10/T07 กับ T09/T06 */
+/* Mobile: เพิ่มระยะห่างแนวตั้งของกลุ่ม T10/T08 กับ T09/T07 */
 @media(max-width:700px){
   #zoneOutdoor .table-unit[data-table="T09"],
-  #zoneOutdoor .table-unit[data-table="T06"]{
+  #zoneOutdoor .table-unit[data-table="T07"]{
     transform:translateY(64px)!important;
   }
   /* ขยับแถวถัดไปตามลงมา เพื่อรักษาช่องไฟและไม่ชนกัน */
-  #zoneOutdoor .table-unit[data-table="T08"]{
+  #zoneOutdoor .table-unit[data-table="T06"]{
     transform:translateY(104px)!important;
   }
 }
@@ -4081,16 +4081,16 @@ const TABLE_PEOPLE_KEY='bn_wedding_custom_table_people_v1';
 const TABLE_COLOR_KEY='bn_wedding_custom_table_colors_v1';
 const TABLES=[
   // indoor — คง layout เดิม เปลี่ยนเฉพาะจำนวนที่นั่งให้ครบ
-  {id:'T27',zone:'indoor',shape:'rect',seats:10},{id:'T26',zone:'indoor',shape:'long',seats:14},{id:'T24',zone:'indoor',shape:'rect',seats:10},
-  {id:'T28',zone:'indoor',shape:'round',seats:10},{id:'T25',zone:'indoor',shape:'long',seats:14},{id:'T23',zone:'indoor',shape:'rect',seats:10},
-  {id:'T29/1',zone:'indoor',shape:'round',seats:10},{id:'T22',zone:'indoor',shape:'rect',seats:10},
-  {id:'T29/2',zone:'indoor',shape:'round',seats:10},{id:'T21',zone:'indoor',shape:'round',seats:10},
+  {id:'T29/3',zone:'indoor',shape:'rect',seats:10},{id:'T25',zone:'indoor',shape:'long',seats:14},{id:'T24',zone:'indoor',shape:'rect',seats:10},
+  {id:'T29/1',zone:'indoor',shape:'round',seats:10},{id:'T27',zone:'indoor',shape:'long',seats:14},{id:'T23',zone:'indoor',shape:'rect',seats:10},
+  {id:'T29',zone:'indoor',shape:'round',seats:10},{id:'T22',zone:'indoor',shape:'rect',seats:10},
+  {id:'T28',zone:'indoor',shape:'round',seats:10},{id:'T21',zone:'indoor',shape:'rect',seats:10},
   // outdoor — โต๊ะมาตรฐาน 10 ที่นั่ง; โต๊ะเล็กคง 6 ที่นั่งตามแปลน
-  {id:'T12',zone:'outdoor',shape:'rect',seats:6},{id:'T10',zone:'outdoor',shape:'long',seats:10},{id:'T07',zone:'outdoor',shape:'round',seats:10},
+  {id:'T12',zone:'outdoor',shape:'rect',seats:6},{id:'T10',zone:'outdoor',shape:'long',seats:10},{id:'T08',zone:'outdoor',shape:'round',seats:10},
   {id:'T13',zone:'outdoor',shape:'rect',seats:10},
   {id:'T14',zone:'outdoor',shape:'rect',seats:10}, // โต๊ะริมคลองใหม่ ระหว่าง T13 และ T15
-  {id:'T09',zone:'outdoor',shape:'long',seats:10},{id:'T06',zone:'outdoor',shape:'round',seats:10},
-  {id:'T15',zone:'outdoor',shape:'rect',seats:10},{id:'T08',zone:'outdoor',shape:'rect',seats:10},{id:'B09',zone:'outdoor',shape:'rect',seats:10},
+  {id:'T09',zone:'outdoor',shape:'long',seats:10},{id:'T07',zone:'outdoor',shape:'round',seats:10},
+  {id:'T15',zone:'outdoor',shape:'rect',seats:10},{id:'T06',zone:'outdoor',shape:'rect',seats:10},{id:'B09',zone:'outdoor',shape:'rect',seats:10},
   {id:'T16',zone:'outdoor',shape:'rect',seats:6},
 
   // Family & VIP — เพิ่ม 3 โต๊ะ โต๊ะละ 10 ที่นั่ง ตามภาพอ้างอิง
