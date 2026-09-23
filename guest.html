@@ -1868,6 +1868,50 @@
 }
 </style>
 
+
+<style id="guest-reopen-t12-t16-v3">
+/* หน้า Guest: เปิด T12 และ T16 กลับมาใช้งาน
+   T41 / T06 / T07 ยังคงเป็นโต๊ะปิดสีเทา */
+#zoneOutdoor .table-unit[data-table="T12"] .table-core,
+#zoneOutdoor .table-unit[data-table="T16"] .table-core{
+  background:linear-gradient(155deg,#dce5c2,#cbd8a9)!important;
+  color:#3f4935!important;
+  opacity:1!important;
+  box-shadow:0 9px 24px rgba(73,82,55,.10)!important;
+  transform:none;
+}
+
+#zoneOutdoor .table-unit[data-table="T12"] .table-core b,
+#zoneOutdoor .table-unit[data-table="T12"] .table-core span,
+#zoneOutdoor .table-unit[data-table="T16"] .table-core b,
+#zoneOutdoor .table-unit[data-table="T16"] .table-core span{
+  color:#3f4935!important;
+  opacity:1!important;
+}
+
+/* เมื่อค้นหาแขกที่อยู่ T12/T16 ให้ Highlight ได้ตามปกติ */
+#zoneOutdoor .table-unit.target[data-table="T12"] .table-core,
+#zoneOutdoor .table-unit.target[data-table="T16"] .table-core{
+  background:linear-gradient(145deg,#6c7450,#89916b)!important;
+  color:#fffdf8!important;
+  opacity:1!important;
+  transform:scale(1.12)!important;
+  box-shadow:
+    0 0 0 8px rgba(255,253,248,.95),
+    0 0 0 13px rgba(108,116,80,.24),
+    0 22px 44px rgba(70,61,45,.28)!important;
+  animation:editorialTablePulse 1.15s ease 3!important;
+}
+
+#zoneOutdoor .table-unit.target[data-table="T12"] .table-core b,
+#zoneOutdoor .table-unit.target[data-table="T12"] .table-core span,
+#zoneOutdoor .table-unit.target[data-table="T16"] .table-core b,
+#zoneOutdoor .table-unit.target[data-table="T16"] .table-core span{
+  color:#fffdf8!important;
+  opacity:1!important;
+}
+</style>
+
 </head>
 
 <body>
