@@ -3917,6 +3917,29 @@ html,body{
 }
 </style>
 
+
+<style id="guest-photo-editor-v31">
+.guest-photo-editor{
+  display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;
+  padding:12px;border:1px solid #e2d9cb;border-radius:18px;background:#f8f3ea;
+  margin-bottom:14px;
+}
+.guest-photo-preview{
+  width:92px;height:92px;border-radius:50%;overflow:hidden;
+  border:2px solid #cbd1b4;background:#fff;display:grid;place-items:center;
+  color:#7d806f;font-size:28px;font-weight:700;
+}
+.guest-photo-preview img{width:100%;height:100%;object-fit:cover;display:block}
+.guest-photo-tools{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.guest-photo-tools small{color:#888475;line-height:1.5}
+.guest-photo-tools input[type=file]{display:none}
+.guest-photo-actions{display:flex;gap:8px;flex-wrap:wrap}
+@media(max-width:520px){
+  .guest-photo-editor{grid-template-columns:72px 1fr}
+  .guest-photo-preview{width:72px;height:72px}
+}
+</style>
+
 </head>
 <body>
 <div class="shell">
@@ -3932,6 +3955,7 @@ html,body{
     <div class="top-actions">
       <button class="btn" id="importBtn">นำเข้าข้อมูล</button>
       <button class="btn" id="exportBtn">Export Excel</button>
+      <button class="btn" id="lockGithubBtn">🔒 Export GitHub Data</button>
       <button class="btn gold" id="printBtn">พิมพ์ผังเป็นรูป</button>
     </div>
   </header>
@@ -4014,6 +4038,20 @@ html,body{
     </div>
     <div class="dialog-body">
       <div class="seat-meta"><div class="chip"><small>TABLE</small><b id="seatTable">—</b></div><div class="chip"><small>SEAT</small><b id="seatNo">—</b></div></div>
+
+      <div class="guest-photo-editor">
+        <div class="guest-photo-preview" id="guestPhotoPreview"><span>N&B</span></div>
+        <div class="guest-photo-tools">
+          <strong>รูปแขก</strong>
+          <small>เลือกรูปจากเครื่อง ระบบจะย่อรูปและเก็บไว้ในข้อมูลของแขก จากนั้น Export เป็น seating-data.js ได้พร้อมรูป</small>
+          <div class="guest-photo-actions">
+            <label class="btn" for="guestPhotoInput">เลือกรูป</label>
+            <button class="btn danger" type="button" id="removeGuestPhoto">ลบรูป</button>
+          </div>
+          <input type="file" id="guestPhotoInput" accept="image/jpeg,image/png,image/webp">
+        </div>
+      </div>
+
       <div class="field"><label>ชื่อแขก *</label><input id="guestName" placeholder="เช่น คุณสมชาย และครอบครัว"></div>
       <div class="field"><label>กลุ่ม / ความสัมพันธ์</label><select id="guestGroup"><option value="">ไม่ระบุ</option><option>ครอบครัวเจ้าบ่าว</option><option>ครอบครัวเจ้าสาว</option><option>เพื่อนเจ้าบ่าว</option><option>เพื่อนเจ้าสาว</option><option>ญาติผู้ใหญ่</option><option>เพื่อนร่วมงาน</option><option>VIP</option><option>อื่น ๆ</option></select></div>
       <div class="field"><label>หมายเหตุ</label><input id="guestNote" placeholder="เช่น มังสวิรัติ / พาเด็กมา / ผู้สูงอายุ"></div>
@@ -4074,6 +4112,8 @@ html,body{
 
 <div class="toast" id="toast"></div>
 
+<script src="seating-data.js"></script>
+
 <script>
 const STORAGE_KEY='bn_wedding_seating_v7_compact_floorplan';
 const TABLE_NAME_KEY='bn_wedding_custom_table_names_v1';
@@ -4104,10 +4144,12 @@ const TABLES=[
   {id:'T33',zone:'vip2',shape:'rect',seats:10}
 ];
 
-let data=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
-let tableNames=JSON.parse(localStorage.getItem(TABLE_NAME_KEY)||'{}');
-let tablePeople=JSON.parse(localStorage.getItem(TABLE_PEOPLE_KEY)||'{}');
-let tableColors=JSON.parse(localStorage.getItem(TABLE_COLOR_KEY)||'{}');
+// ===== GitHub locked snapshot support (added; existing browser save remains unchanged) =====
+const GITHUB_FINAL=(window.WEDDING_FINAL_DATA && typeof window.WEDDING_FINAL_DATA==='object') ? window.WEDDING_FINAL_DATA : null;
+let data=GITHUB_FINAL && GITHUB_FINAL.seating ? JSON.parse(JSON.stringify(GITHUB_FINAL.seating)) : JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');
+let tableNames=GITHUB_FINAL && GITHUB_FINAL.tableNames ? JSON.parse(JSON.stringify(GITHUB_FINAL.tableNames)) : JSON.parse(localStorage.getItem(TABLE_NAME_KEY)||'{}');
+let tablePeople=GITHUB_FINAL && GITHUB_FINAL.tablePeople ? JSON.parse(JSON.stringify(GITHUB_FINAL.tablePeople)) : JSON.parse(localStorage.getItem(TABLE_PEOPLE_KEY)||'{}');
+let tableColors=GITHUB_FINAL && GITHUB_FINAL.tableColors ? JSON.parse(JSON.stringify(GITHUB_FINAL.tableColors)) : JSON.parse(localStorage.getItem(TABLE_COLOR_KEY)||'{}');
 let activeSeat=null;
 
 function getTableName(tableId){
@@ -4300,12 +4342,58 @@ function render(){
   updateStats();renderGuestList();
 }
 
+
+let pendingGuestPhoto = "";
+
+function guestInitial(name){
+  const s=String(name||"").trim();
+  return s ? Array.from(s)[0] : "N&B";
+}
+function renderGuestPhotoPreview(photo,name){
+  const box=document.getElementById("guestPhotoPreview");
+  if(!box)return;
+  box.innerHTML="";
+  if(photo){
+    const img=document.createElement("img");
+    img.alt=name ? "รูป "+name : "Guest photo";
+    img.src=photo;
+    img.onerror=()=>{ box.innerHTML="<span>"+escapeHtml(guestInitial(name))+"</span>"; };
+    box.appendChild(img);
+  }else{
+    box.innerHTML="<span>"+escapeHtml(guestInitial(name))+"</span>";
+  }
+}
+function resizeGuestPhoto(file){
+  return new Promise((resolve,reject)=>{
+    if(!file){resolve("");return}
+    const reader=new FileReader();
+    reader.onerror=()=>reject(new Error("อ่านไฟล์รูปไม่สำเร็จ"));
+    reader.onload=()=>{
+      const img=new Image();
+      img.onerror=()=>reject(new Error("ไฟล์รูปไม่ถูกต้อง"));
+      img.onload=()=>{
+        const MAX=640;
+        let w=img.naturalWidth,h=img.naturalHeight;
+        const scale=Math.min(1,MAX/Math.max(w,h));
+        w=Math.max(1,Math.round(w*scale)); h=Math.max(1,Math.round(h*scale));
+        const c=document.createElement("canvas");
+        c.width=w;c.height=h;
+        c.getContext("2d").drawImage(img,0,0,w,h);
+        resolve(c.toDataURL("image/jpeg",0.78));
+      };
+      img.src=reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 function openSeat(table,seat){
   activeSeat={table,seat};const rec=seatRecord(table,seat);const t=TABLES.find(x=>x.id===table);
   document.getElementById('modalTitle').textContent=rec.name?'Edit Guest':'Guest Seating';
   document.getElementById('modalSub').textContent=`${zoneName(t.zone)} • คลิกบันทึกเพื่อยืนยัน`;
   document.getElementById('seatTable').textContent=`โต๊ะ ${table}`;document.getElementById('seatNo').textContent=`ที่นั่ง ${seat}`;
   document.getElementById('guestName').value=rec.name||'';document.getElementById('guestGroup').value=rec.group||'';document.getElementById('guestNote').value=rec.note||'';
+  pendingGuestPhoto=rec.photo||''; renderGuestPhotoPreview(pendingGuestPhoto,rec.name||''); document.getElementById('guestPhotoInput').value='';
   document.getElementById('removeSeat').style.visibility=rec.name?'visible':'hidden';
   document.getElementById('seatModal').classList.add('open');setTimeout(()=>document.getElementById('guestName').focus(),100);
 }
@@ -4315,11 +4403,39 @@ document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if
 
 document.getElementById('saveSeat').onclick=()=>{
   if(!activeSeat)return;const name=document.getElementById('guestName').value.trim();if(!name){toast('กรุณากรอกชื่อแขก');return}
-  data[seatKey(activeSeat.table,activeSeat.seat)]={name,group:document.getElementById('guestGroup').value,note:document.getElementById('guestNote').value.trim(),updatedAt:new Date().toISOString()};
+  data[seatKey(activeSeat.table,activeSeat.seat)]={name,group:document.getElementById('guestGroup').value,note:document.getElementById('guestNote').value.trim(),photo:pendingGuestPhoto||'',updatedAt:new Date().toISOString()};
   save();render();closeModals();toast(`บันทึก ${name} แล้ว`);
 };
 document.getElementById('removeSeat').onclick=()=>{if(!activeSeat)return;delete data[seatKey(activeSeat.table,activeSeat.seat)];save();render();closeModals();toast('ลบรายชื่อจากที่นั่งแล้ว')};
 document.getElementById('guestName').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('saveSeat').click()});
+
+document.getElementById('guestPhotoInput').addEventListener('change',async e=>{
+  const file=e.target.files && e.target.files[0];
+  if(!file)return;
+  if(!/^image\/(jpeg|png|webp)$/i.test(file.type)){
+    toast('รองรับ JPG, PNG และ WEBP');
+    e.target.value='';
+    return;
+  }
+  try{
+    pendingGuestPhoto=await resizeGuestPhoto(file);
+    renderGuestPhotoPreview(pendingGuestPhoto,document.getElementById('guestName').value);
+    toast('เพิ่มรูปแล้ว • กดบันทึกที่นั่งเพื่อยืนยัน');
+  }catch(err){
+    console.error(err);
+    toast('อ่านรูปไม่สำเร็จ');
+  }
+});
+document.getElementById('removeGuestPhoto').addEventListener('click',()=>{
+  pendingGuestPhoto='';
+  document.getElementById('guestPhotoInput').value='';
+  renderGuestPhotoPreview('',document.getElementById('guestName').value);
+  toast('ลบรูปแล้ว • กดบันทึกที่นั่งเพื่อยืนยัน');
+});
+document.getElementById('guestName').addEventListener('input',()=>{
+  if(!pendingGuestPhoto) renderGuestPhotoPreview('',document.getElementById('guestName').value);
+});
+
 
 function openTable(tableId){
   pendingTableColor=null;
@@ -4493,6 +4609,37 @@ function jumpToSeat(key){const btn=document.querySelector(`.chair[data-key="${CS
 
 function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[s]))}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.remove('show'),2200)}
+
+/* =========================================================
+   EXPORT FINAL SEATING DATA FOR GITHUB
+   สร้าง seating-data.js พร้อมข้อมูลรูปแขก (Base64) — ไม่เปลี่ยนระบบเดิม
+   ========================================================= */
+document.getElementById('lockGithubBtn').onclick=()=>{
+  try{
+    const snapshot={
+      seating:JSON.parse(JSON.stringify(data)),
+      tableNames:JSON.parse(JSON.stringify(tableNames)),
+      tablePeople:JSON.parse(JSON.stringify(tablePeople)),
+      tableColors:JSON.parse(JSON.stringify(tableColors)),
+      lockedAt:new Date().toISOString()
+    };
+
+    const content='window.WEDDING_FINAL_DATA = '+JSON.stringify(snapshot,null,2)+';\n';
+    const blob=new Blob([content],{type:'text/javascript;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url;
+    a.download='seating-data.js';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    toast('สร้าง seating-data.js พร้อมรูปแขกแล้ว • นำไฟล์นี้ขึ้น GitHub');
+  }catch(err){
+    console.error('GitHub seating export error:',err);
+    toast('สร้างข้อมูล GitHub ไม่สำเร็จ');
+  }
+};
 
 document.getElementById('exportBtn').onclick=()=>{
   try{
