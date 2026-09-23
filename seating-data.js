@@ -574,27 +574,6 @@ window.WEDDING_FINAL_DATA = {
       "photo": "",
       "updatedAt": "2026-09-23T10:37:30.280Z"
     },
-    "T21-4": {
-      "name": "พี่แต้ม  (My Escape)",
-      "group": "",
-      "note": "",
-      "photo": "",
-      "updatedAt": "2026-09-23T10:36:45.487Z"
-    },
-    "T21-5": {
-      "name": "พี่แพรว (My Escape)",
-      "group": "",
-      "note": "",
-      "photo": "",
-      "updatedAt": "2026-09-23T10:37:24.342Z"
-    },
-    "T21-6": {
-      "name": "แบมแบม (My Escape)",
-      "group": "",
-      "note": "",
-      "photo": "",
-      "updatedAt": "2026-09-23T10:39:21.324Z"
-    },
     "T21-8": {
       "name": "น้องตั๊ก BBH",
       "group": "",
@@ -629,13 +608,6 @@ window.WEDDING_FINAL_DATA = {
       "note": "",
       "photo": "",
       "updatedAt": "2026-09-23T10:38:58.784Z"
-    },
-    "T21-7": {
-      "name": "แบมแบม (ผู้ติดตาม)",
-      "group": "",
-      "note": "",
-      "photo": "",
-      "updatedAt": "2026-09-23T10:39:16.365Z"
     },
     "T16-6": {
       "name": "คุุณอาร์ม (มาคิณ)",
@@ -848,18 +820,18 @@ window.WEDDING_FINAL_DATA = {
       "updatedAt": "2026-09-23T11:08:14.532Z"
     },
     "T13-9": {
-      "name": "พี่แน๊ท",
+      "name": "พี่แน็ท + ผู้ติดตาม",
       "group": "",
       "note": "",
       "photo": "",
-      "updatedAt": "2026-09-23T11:08:35.037Z"
+      "updatedAt": "2026-09-23T16:06:21.277Z"
     },
     "T13-8": {
-      "name": "พี่แน๊ท(ผู้ตืดตาม)",
+      "name": "น้าเกียรติ+ผู้ติดตาม",
       "group": "",
       "note": "",
       "photo": "",
-      "updatedAt": "2026-09-23T11:08:50.896Z"
+      "updatedAt": "2026-09-23T16:06:44.561Z"
     },
     "T14-2": {
       "name": "คุณอิู๊ด",
@@ -1385,6 +1357,13 @@ window.WEDDING_FINAL_DATA = {
       "note": "",
       "photo": "",
       "updatedAt": "2026-09-23T15:12:23.742Z"
+    },
+    "T21-4": {
+      "name": "แบม แบม My Escepe",
+      "group": "",
+      "note": "",
+      "photo": "",
+      "updatedAt": "2026-09-23T15:58:02.396Z"
     }
   },
   "tableNames": {
@@ -1439,5 +1418,5 @@ window.WEDDING_FINAL_DATA = {
     "T29/3": "blue",
     "T12": "rose"
   },
-  "lockedAt": "2026-09-23T15:53:12.481Z"
+  "lockedAt": "2026-09-23T16:06:53.306Z"
 };
