@@ -1912,6 +1912,89 @@
 }
 </style>
 
+
+<style id="guest-table-colors-v4">
+/* เปลี่ยนเฉพาะสีโต๊ะตามรายการที่กำหนด */
+
+/* ชมพู */
+.table-unit[data-table="T25"] .table-core,
+.table-unit[data-table="T24"] .table-core,
+.table-unit[data-table="T21"] .table-core,
+.table-unit[data-table="T12"] .table-core,
+.table-unit[data-table="T16"] .table-core,
+.table-unit[data-table="T08"] .table-core,
+.table-unit[data-table="T42"] .table-core,
+.table-unit[data-table="T29/3"] .table-core{
+  background:linear-gradient(155deg,#f1c9bd,#eab8aa)!important;
+  color:#6e4a43!important;
+  opacity:1!important;
+}
+
+/* เขียว */
+.table-unit[data-table="T29/1"] .table-core,
+.table-unit[data-table="T29"] .table-core,
+.table-unit[data-table="T28"] .table-core,
+.table-unit[data-table="T27"] .table-core,
+.table-unit[data-table="T23"] .table-core,
+.table-unit[data-table="T22"] .table-core,
+.table-unit[data-table="T43"] .table-core{
+  background:linear-gradient(155deg,#dce5c2,#cbd8a9)!important;
+  color:#3f4935!important;
+  opacity:1!important;
+}
+
+/* เหลือง */
+.table-unit[data-table="T09"] .table-core,
+.table-unit[data-table="T10"] .table-core,
+.table-unit[data-table="T13"] .table-core,
+.table-unit[data-table="T14"] .table-core,
+.table-unit[data-table="T15"] .table-core{
+  background:linear-gradient(155deg,#f1dfaa,#e5ca82)!important;
+  color:#665532!important;
+  opacity:1!important;
+}
+
+/* ให้เลขและชื่อโต๊ะใช้สีตามโต๊ะ */
+.table-unit[data-table="T25"] .table-core b,.table-unit[data-table="T25"] .table-core span,
+.table-unit[data-table="T24"] .table-core b,.table-unit[data-table="T24"] .table-core span,
+.table-unit[data-table="T21"] .table-core b,.table-unit[data-table="T21"] .table-core span,
+.table-unit[data-table="T12"] .table-core b,.table-unit[data-table="T12"] .table-core span,
+.table-unit[data-table="T16"] .table-core b,.table-unit[data-table="T16"] .table-core span,
+.table-unit[data-table="T08"] .table-core b,.table-unit[data-table="T08"] .table-core span,
+.table-unit[data-table="T42"] .table-core b,.table-unit[data-table="T42"] .table-core span,
+.table-unit[data-table="T29/3"] .table-core b,.table-unit[data-table="T29/3"] .table-core span{
+  color:#6e4a43!important;opacity:1!important;
+}
+.table-unit[data-table="T29/1"] .table-core b,.table-unit[data-table="T29/1"] .table-core span,
+.table-unit[data-table="T29"] .table-core b,.table-unit[data-table="T29"] .table-core span,
+.table-unit[data-table="T28"] .table-core b,.table-unit[data-table="T28"] .table-core span,
+.table-unit[data-table="T27"] .table-core b,.table-unit[data-table="T27"] .table-core span,
+.table-unit[data-table="T23"] .table-core b,.table-unit[data-table="T23"] .table-core span,
+.table-unit[data-table="T22"] .table-core b,.table-unit[data-table="T22"] .table-core span,
+.table-unit[data-table="T43"] .table-core b,.table-unit[data-table="T43"] .table-core span{
+  color:#3f4935!important;opacity:1!important;
+}
+.table-unit[data-table="T09"] .table-core b,.table-unit[data-table="T09"] .table-core span,
+.table-unit[data-table="T10"] .table-core b,.table-unit[data-table="T10"] .table-core span,
+.table-unit[data-table="T13"] .table-core b,.table-unit[data-table="T13"] .table-core span,
+.table-unit[data-table="T14"] .table-core b,.table-unit[data-table="T14"] .table-core span,
+.table-unit[data-table="T15"] .table-core b,.table-unit[data-table="T15"] .table-core span{
+  color:#665532!important;opacity:1!important;
+}
+
+/* ตอนค้นหา ให้ Highlight เหมือนเดิม */
+.table-unit.target .table-core{
+  background:linear-gradient(145deg,#6c7450,#89916b)!important;
+  color:#fffdf8!important;
+  opacity:1!important;
+}
+.table-unit.target .table-core b,
+.table-unit.target .table-core span{
+  color:#fffdf8!important;
+  opacity:1!important;
+}
+</style>
+
 </head>
 
 <body>
