@@ -1437,12 +1437,435 @@
 .guest-card-name{font-family:'Bodoni Moda','Noto Sans Thai',serif;font-size:27px;font-weight:600;color:#34382e;line-height:1.25}
 .guest-card-role{display:inline-flex;margin-top:9px;padding:7px 13px;border-radius:999px;background:#e7ecd8;color:#596048;font-size:11px;font-weight:700}
 .guest-card-note{margin:12px auto 0;max-width:320px;color:#858173;font-size:11px;line-height:1.6}
-.guest-seat-panel{margin-top:20px;padding:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#f7f2e9;border:1px solid #e5dccd;border-radius:20px}
+.guest-seat-panel{margin-top:20px;padding:16px;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;background:#f7f2e9;border:1px solid #e5dccd;border-radius:20px}
 .guest-seat-item small{display:block;color:#9a9588;font-size:8px;margin-bottom:4px}.guest-seat-item strong{display:block;color:#4e5542;font-size:13px;line-height:1.3}
 .guest-map-btn{width:100%;margin-top:16px;padding:14px 18px;border:0;border-radius:999px;background:#6c7450;color:white;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(108,116,80,.22)}
 .guest-map-btn:hover{background:#596048;transform:translateY(-1px)}
 .result{cursor:pointer}.result:hover{border-color:#aab08d;box-shadow:0 14px 36px rgba(70,61,45,.11)}
 @media(max-width:520px){.guest-profile-card{border-radius:25px}.guest-card-body{padding-left:18px;padding-right:18px}.guest-seat-panel{gap:4px;padding:12px}.guest-seat-item strong{font-size:11px}}
+</style>
+
+
+<style id="guest-table-only-v1">
+/* ปลายทางแบบระบุเฉพาะโต๊ะ ไม่ระบุเก้าอี้/หมายเลขที่นั่ง */
+.guest-seat-panel{grid-template-columns:repeat(2,1fr)!important}
+.chairs,.chair,.chair.target-seat{display:none!important}
+</style>
+
+<style id="editorial-wedding-map-v2">
+/* =========================================================
+   EDITORIAL WEDDING MAP — BIG TABLE NAME / NUMBER
+   เน้นชื่อ/เลขโต๊ะใหญ่แบบผังงานแต่งตัวอย่าง
+   ========================================================= */
+
+/* ซ่อนเก้าอี้ทั้งหมด: แขกต้องรู้เพียง "โต๊ะ" */
+.chairs,.chair,.chair.target-seat{display:none!important}
+
+/* โต๊ะโดยรวม */
+.table-unit{
+  overflow:visible!important;
+  min-height:128px;
+}
+
+/* การ์ดโต๊ะ */
+.table-core,
+.table-core.rect,
+.table-core.round,
+.table-core.long{
+  width:104px!important;
+  min-width:104px!important;
+  height:118px!important;
+  min-height:118px!important;
+  padding:10px 8px!important;
+  border:0!important;
+  border-radius:24px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:5px!important;
+  background:linear-gradient(155deg,#dce5c2,#cbd8a9)!important;
+  box-shadow:0 9px 24px rgba(73,82,55,.10)!important;
+  color:#3f4935!important;
+  transform:none;
+}
+
+/* โต๊ะฝั่ง/กลุ่มสลับโทนให้อ่านผังง่าย */
+#zoneIndoor .table-unit:nth-child(2n) .table-core{
+  background:linear-gradient(155deg,#f1c9bd,#eab8aa)!important;
+  color:#6e4a43!important;
+}
+#zoneOutdoor .table-unit:nth-child(3n+2) .table-core{
+  background:linear-gradient(155deg,#f1c9bd,#eab8aa)!important;
+  color:#6e4a43!important;
+}
+.vip-family-tables .table-core,
+.vip-second-floor-tables .table-core{
+  background:linear-gradient(155deg,#eadbb9,#dcc596)!important;
+  color:#64533c!important;
+}
+
+/* ชื่อ/เลขโต๊ะ — จุดเด่นหลัก */
+.table-core b{
+  display:block!important;
+  max-width:100%!important;
+  margin:0!important;
+  font-family:"Bodoni Moda","Noto Sans Thai",serif!important;
+  font-size:34px!important;
+  line-height:.95!important;
+  font-weight:500!important;
+  font-style:italic!important;
+  letter-spacing:-.055em!important;
+  color:inherit!important;
+  overflow:visible!important;
+  white-space:nowrap!important;
+  text-overflow:clip!important;
+}
+
+/* ชื่อกลุ่ม/ชื่อโต๊ะใต้เลข */
+.table-core span{
+  display:block!important;
+  width:100%!important;
+  max-width:92px!important;
+  margin:5px 0 0!important;
+  padding:0 2px!important;
+  overflow:hidden!important;
+  color:inherit!important;
+  opacity:.78!important;
+  font-family:Manrope,"Noto Sans Thai",sans-serif!important;
+  font-size:7px!important;
+  line-height:1.35!important;
+  font-weight:600!important;
+  text-align:center!important;
+  text-overflow:ellipsis!important;
+  white-space:normal!important;
+  display:-webkit-box!important;
+  -webkit-line-clamp:2!important;
+  -webkit-box-orient:vertical!important;
+}
+
+/* โต๊ะยาวกลางผัง ให้ดูเหมือนแถบโต๊ะใน reference */
+#zoneIndoor .table-unit[data-table="T25"] .table-core,
+#zoneIndoor .table-unit[data-table="T27"] .table-core{
+  width:108px!important;
+  min-width:108px!important;
+  height:300px!important;
+  min-height:300px!important;
+  border-radius:28px!important;
+}
+#zoneIndoor .table-unit[data-table="T25"] .table-core b,
+#zoneIndoor .table-unit[data-table="T27"] .table-core b{
+  font-size:39px!important;
+}
+
+/* T06 เดิมเป็นโต๊ะกว้าง */
+#zoneOutdoor .table-unit[data-table="T06"] .table-core{
+  width:190px!important;
+  min-width:190px!important;
+  height:108px!important;
+  min-height:108px!important;
+}
+
+/* VIP ด้านล่างให้ยังอ่านชื่อใหญ่ */
+.vip-family-tables .table-unit{
+  overflow:visible!important;
+}
+.vip-family-tables .table-core,
+.vip-family-tables .table-core.rect,
+.vip-family-tables .table-core.round,
+.vip-family-tables .table-core.long{
+  width:82px!important;
+  min-width:82px!important;
+  height:70px!important;
+  min-height:70px!important;
+  border-radius:18px!important;
+  padding:5px!important;
+}
+.vip-family-tables .table-core b{font-size:24px!important}
+.vip-family-tables .table-core span{font-size:5.5px!important;max-width:72px!important}
+
+/* VIP ชั้น 2 */
+.vip-second-floor-tables .table-core,
+.vip-second-floor-tables .table-core.rect,
+.vip-second-floor-tables .table-core.round{
+  width:128px!important;
+  min-width:128px!important;
+  height:92px!important;
+  min-height:92px!important;
+  border-radius:22px!important;
+}
+.vip-second-floor-tables .table-core b{font-size:31px!important}
+
+/* โต๊ะที่ค้นพบ */
+.table-unit.target .table-core{
+  position:relative;
+  z-index:20;
+  background:linear-gradient(145deg,#6c7450,#89916b)!important;
+  color:#fffdf8!important;
+  transform:scale(1.12)!important;
+  box-shadow:
+    0 0 0 8px rgba(255,253,248,.95),
+    0 0 0 13px rgba(108,116,80,.24),
+    0 22px 44px rgba(70,61,45,.28)!important;
+  animation:editorialTablePulse 1.15s ease 3!important;
+}
+@keyframes editorialTablePulse{
+  50%{transform:scale(1.18)}
+}
+
+/* ป้าย "โต๊ะของคุณ" */
+.you-label{
+  bottom:-31px!important;
+  padding:7px 13px!important;
+  background:#3f4935!important;
+  font-size:9px!important;
+  letter-spacing:.04em!important;
+  box-shadow:0 8px 20px rgba(63,73,53,.20)!important;
+}
+
+/* Popup: แสดงเฉพาะ TABLE + ZONE */
+.guest-seat-panel{
+  grid-template-columns:repeat(2,1fr)!important;
+}
+.guest-seat-item strong{
+  font-family:"Bodoni Moda","Noto Sans Thai",serif;
+}
+#modalTable{
+  font-size:18px!important;
+  color:#596048!important;
+}
+
+/* หัวผังให้อารมณ์ wedding editorial */
+.map-header h2{
+  font-family:"Bodoni Moda","Noto Sans Thai",serif!important;
+  font-size:38px!important;
+  font-style:italic;
+  letter-spacing:-.03em;
+}
+.map-header .small{
+  letter-spacing:.36em!important;
+}
+
+/* บนมือถือยังคงผังเต็มและเลื่อนซ้าย-ขวาได้ */
+@media(max-width:700px){
+  .table-core,
+  .table-core.rect,
+  .table-core.round,
+  .table-core.long{
+    width:104px!important;
+    min-width:104px!important;
+    height:118px!important;
+    min-height:118px!important;
+  }
+  .table-core b{font-size:34px!important}
+}
+</style>
+
+
+<style id="big-table-owner-label-v1">
+/* ชื่อกำกับโต๊ะ เช่น "ครอบครัวนุ๊ก" ให้เด่นเป็นข้อมูลหลัก */
+.table-core span{
+  display:block!important;
+  width:100%!important;
+  max-width:98px!important;
+  margin:10px 0 0!important;
+  padding:0 3px!important;
+  overflow:visible!important;
+  white-space:normal!important;
+  text-overflow:clip!important;
+  font-family:"Noto Sans Thai",Manrope,sans-serif!important;
+  font-size:13px!important;
+  line-height:1.22!important;
+  font-weight:800!important;
+  letter-spacing:-.02em!important;
+  text-align:center!important;
+  opacity:.96!important;
+  -webkit-line-clamp:unset!important;
+  -webkit-box-orient:unset!important;
+}
+
+/* โต๊ะยาว ให้ชื่อกลุ่มใหญ่ขึ้นอีก */
+#zoneIndoor .table-unit[data-table="T25"] .table-core span,
+#zoneIndoor .table-unit[data-table="T27"] .table-core span{
+  max-width:100px!important;
+  font-size:15px!important;
+  line-height:1.25!important;
+}
+
+/* T06 กว้าง สามารถใช้ชื่อยาวได้ */
+#zoneOutdoor .table-unit[data-table="T06"] .table-core span{
+  max-width:170px!important;
+  font-size:15px!important;
+}
+
+/* Family / VIP */
+.vip-family-tables .table-core span{
+  max-width:78px!important;
+  font-size:9px!important;
+  line-height:1.15!important;
+  font-weight:800!important;
+}
+.vip-second-floor-tables .table-core span{
+  max-width:118px!important;
+  font-size:12px!important;
+  line-height:1.2!important;
+  font-weight:800!important;
+}
+
+/* โต๊ะที่ถูกค้นหา ชื่อกำกับยิ่งชัด */
+.table-unit.target .table-core span{
+  color:#fffdf8!important;
+  opacity:1!important;
+}
+</style>
+
+
+<style id="owner-label-same-font-v2">
+/* ชื่อกำกับโต๊ะ: ใหญ่ขึ้น และใช้ฟอนต์เดียวกับเลขโต๊ะ */
+.table-core span{
+  display:block!important;
+  width:100%!important;
+  max-width:104px!important;
+  margin:11px 0 0!important;
+  padding:0 2px!important;
+
+  font-family:"Bodoni Moda","Noto Sans Thai",serif!important;
+  font-size:20px!important;
+  line-height:1.05!important;
+  font-weight:500!important;
+  font-style:italic!important;
+  letter-spacing:-.045em!important;
+
+  color:inherit!important;
+  opacity:1!important;
+  text-align:center!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  text-overflow:clip!important;
+
+  -webkit-line-clamp:unset!important;
+  -webkit-box-orient:unset!important;
+}
+
+/* โต๊ะยาว */
+#zoneIndoor .table-unit[data-table="T25"] .table-core span,
+#zoneIndoor .table-unit[data-table="T27"] .table-core span{
+  max-width:102px!important;
+  font-size:23px!important;
+  line-height:1.05!important;
+}
+
+/* โต๊ะ T06 ที่กว้าง */
+#zoneOutdoor .table-unit[data-table="T06"] .table-core span{
+  max-width:176px!important;
+  font-size:23px!important;
+}
+
+/* VIP ด้านล่าง */
+.vip-family-tables .table-core span{
+  max-width:78px!important;
+  font-size:13px!important;
+  line-height:1.05!important;
+}
+
+/* VIP ชั้น 2 */
+.vip-second-floor-tables .table-core span{
+  max-width:120px!important;
+  font-size:18px!important;
+  line-height:1.05!important;
+}
+
+/* Highlight แล้วชื่อยังชัด */
+.table-unit.target .table-core span{
+  color:#fffdf8!important;
+  opacity:1!important;
+}
+</style>
+
+
+<style id="gray-selected-tables-v1">
+/* โต๊ะสีเทาตามที่กำหนด: T41, T12, T16, T06, T07 */
+.table-unit[data-table="T41"] .table-core,
+.table-unit[data-table="T12"] .table-core,
+.table-unit[data-table="T16"] .table-core,
+.table-unit[data-table="T06"] .table-core,
+.table-unit[data-table="T07"] .table-core{
+  background:linear-gradient(155deg,#d8d8d4,#bdbdb8)!important;
+  color:#4f504c!important;
+}
+
+/* ถ้าถูกค้นหา ยังให้ Highlight สีเดิมเพื่อมองเห็นชัด */
+.table-unit.target[data-table="T41"] .table-core,
+.table-unit.target[data-table="T12"] .table-core,
+.table-unit.target[data-table="T16"] .table-core,
+.table-unit.target[data-table="T06"] .table-core,
+.table-unit.target[data-table="T07"] .table-core{
+  background:linear-gradient(145deg,#6c7450,#89916b)!important;
+  color:#fffdf8!important;
+}
+</style>
+
+
+<style id="disabled-gray-tables-v2">
+/* โต๊ะที่ไม่เปิดให้นั่ง: ทำทั้งโต๊ะและเลข/ชื่อให้จาง */
+.table-unit[data-table="T41"] .table-core,
+.table-unit[data-table="T12"] .table-core,
+.table-unit[data-table="T16"] .table-core,
+.table-unit[data-table="T06"] .table-core,
+.table-unit[data-table="T07"] .table-core{
+  background:linear-gradient(155deg,#e5e5e2,#d4d4d0)!important;
+  color:#8f908b!important;
+  opacity:.58!important;
+  box-shadow:0 5px 14px rgba(80,80,75,.06)!important;
+}
+
+/* เลขโต๊ะ + ชื่อกำกับจางลง */
+.table-unit[data-table="T41"] .table-core b,
+.table-unit[data-table="T12"] .table-core b,
+.table-unit[data-table="T16"] .table-core b,
+.table-unit[data-table="T06"] .table-core b,
+.table-unit[data-table="T07"] .table-core b,
+.table-unit[data-table="T41"] .table-core span,
+.table-unit[data-table="T12"] .table-core span,
+.table-unit[data-table="T16"] .table-core span,
+.table-unit[data-table="T06"] .table-core span,
+.table-unit[data-table="T07"] .table-core span{
+  color:#8f908b!important;
+  opacity:.48!important;
+}
+
+/* โต๊ะกลุ่มนี้ตั้งใจไม่ใช้งาน จึงไม่เปลี่ยนเป็นสี Highlight */
+.table-unit.target[data-table="T41"] .table-core,
+.table-unit.target[data-table="T12"] .table-core,
+.table-unit.target[data-table="T16"] .table-core,
+.table-unit.target[data-table="T06"] .table-core,
+.table-unit.target[data-table="T07"] .table-core{
+  background:linear-gradient(155deg,#e5e5e2,#d4d4d0)!important;
+  color:#8f908b!important;
+  opacity:.58!important;
+  transform:none!important;
+  box-shadow:0 5px 14px rgba(80,80,75,.06)!important;
+  animation:none!important;
+}
+</style>
+
+
+<style id="force-t06-disabled-gray">
+/* T06 — ปิดใช้งาน / สีเทาจาง */
+#zoneOutdoor .table-unit[data-table="T06"] .table-core,
+.table-unit[data-table="T06"] .table-core{
+  background:#d4d4d0!important;
+  color:#8f908b!important;
+  opacity:.58!important;
+  box-shadow:0 5px 14px rgba(80,80,75,.06)!important;
+}
+#zoneOutdoor .table-unit[data-table="T06"] .table-core b,
+#zoneOutdoor .table-unit[data-table="T06"] .table-core span,
+.table-unit[data-table="T06"] .table-core b,
+.table-unit[data-table="T06"] .table-core span{
+  color:#8f908b!important;
+  opacity:.48!important;
+}
 </style>
 
 </head>
@@ -1499,7 +1922,7 @@
       </h2>
 
       <div class="description">
-        พิมพ์ชื่อหรือนามสกุล เพื่อค้นหาโต๊ะและหมายเลขที่นั่ง
+        พิมพ์ชื่อหรือนามสกุล เพื่อค้นหาโต๊ะของคุณ
       </div>
 
       <div class="search-box">
@@ -1576,7 +1999,7 @@
         </h2>
 
         <p>
-          เมื่อค้นหาชื่อแล้ว ระบบจะแสดงตำแหน่งโต๊ะและเก้าอี้ของคุณ
+          เมื่อค้นหาชื่อแล้ว ระบบจะแสดงตำแหน่งโต๊ะของคุณ
         </p>
 
       </div>
@@ -1696,7 +2119,6 @@
       <div class="guest-card-note" id="modalGuestNote" hidden></div>
       <div class="guest-seat-panel">
         <div class="guest-seat-item"><small>TABLE</small><strong id="modalTable">-</strong></div>
-        <div class="guest-seat-item"><small>SEAT</small><strong id="modalSeat">-</strong></div>
         <div class="guest-seat-item"><small>ZONE</small><strong id="modalZone">-</strong></div>
       </div>
       <button class="guest-map-btn" id="modalShowSeat" type="button">ดูตำแหน่งโต๊ะบนแผนผัง →</button>
@@ -2876,10 +3298,6 @@
           </span>
 
           <span class="tag">
-            ที่นั่ง ${escapeHtml(guest.seat)}
-          </span>
-
-          <span class="tag">
             ${escapeHtml(guest.zoneName)}
           </span>
 
@@ -2912,7 +3330,7 @@
 
 
       button.textContent =
-        "ดูข้อมูล & ที่นั่ง";
+        "ดูข้อมูล & โต๊ะ";
 
 
       button.addEventListener(
@@ -2965,7 +3383,6 @@
       note.hidden = !guest.note;
       const tableText = guest.tableName ? `${guest.table} • ${guest.tableName}` : guest.table;
       document.getElementById("modalTable").textContent = tableText || "-";
-      document.getElementById("modalSeat").textContent = guest.seat || "-";
       document.getElementById("modalZone").textContent = guest.zoneName || "-";
       photoWrap.innerHTML = "";
       if(guest.photo){
@@ -3058,94 +3475,48 @@
 
       clearHighlight();
 
-
       const tableUnit =
         document.querySelector(
           `.table-unit[data-table="${cssEscape(guest.table)}"]`
         );
 
-
-      const chair =
-        document.querySelector(
-          `.chair[data-key="${cssEscape(guest.key)}"]`
-        );
-
-
-      if(
-        tableUnit
-      ){
-
-        tableUnit.classList.add(
-          "target"
-        );
-
-      }
-
-
-      if(
-        chair
-      ){
-
-        chair.classList.add(
-          "target-seat"
-        );
-
+      if(tableUnit){
+        tableUnit.classList.add("target");
 
         const label =
-          document.createElement(
-            "div"
-          );
-
+          document.createElement("div");
 
         label.className =
           "you-label";
 
-
         label.textContent =
-          "ที่นั่งของคุณ";
+          "โต๊ะของคุณ";
 
-
-        chair.appendChild(
-          label
-        );
-
+        tableUnit.appendChild(label);
       }
 
-
       const map =
-        document.getElementById(
-          "mapSection"
-        );
-
+        document.getElementById("mapSection");
 
       map.scrollIntoView({
         behavior:"smooth",
         block:"start"
       });
 
-
       setTimeout(
         () => {
-
           if(tableUnit){
-
             tableUnit.scrollIntoView({
               behavior:"smooth",
               block:"center",
               inline:"center"
             });
-
           }
-
         },
         500
       );
 
-
-      showSelectedBanner(
-        guest
-      );
-
+      showSelectedBanner(guest);
     }
 
 
@@ -3208,7 +3579,7 @@
       document.getElementById(
         "bannerDetail"
       ).textContent =
-        `โต๊ะ ${tableText} • ที่นั่ง ${guest.seat} • ${guest.zoneName}`;
+        `โต๊ะ ${tableText} • ${guest.zoneName}`;
 
 
       banner.classList.add(
