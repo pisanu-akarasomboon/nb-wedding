@@ -1268,11 +1268,11 @@ window.WEDDING_FINAL_DATA = {
       "updatedAt": "2026-09-23T14:45:24.056Z"
     },
     "T29/3-9": {
-      "name": "น้องมุก",
+      "name": "มอส",
       "group": "",
       "note": "",
       "photo": "",
-      "updatedAt": "2026-09-23T14:45:38.380Z"
+      "updatedAt": "2026-09-25T04:26:44.681Z"
     },
     "T29/3-10": {
       "name": "พี่เกด",
@@ -1402,5 +1402,5 @@ window.WEDDING_FINAL_DATA = {
     "T08": "mauve",
     "T29/3": "blue"
   },
-  "lockedAt": "2026-09-25T04:08:24.784Z"
+  "lockedAt": "2026-09-25T04:26:55.496Z"
 };
